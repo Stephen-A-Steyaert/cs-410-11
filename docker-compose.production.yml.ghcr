@@ -43,6 +43,7 @@ services:
     restart: unless-stopped
     environment:
       - FLASK_ENV=production
+      - SECRET_KEY=${SECRET_KEY:-please-change-this-secret-key}
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.flask.entrypoints=http"
