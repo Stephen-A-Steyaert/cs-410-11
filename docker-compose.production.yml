@@ -38,11 +38,12 @@ services:
       - proxy
 
   web:
-    image: ghcr.io/Stephen-Steyaert-ODU/cs-410-11:latest
+    build: ./website
     container_name: flask-app
     restart: unless-stopped
     environment:
       - FLASK_ENV=production
+      - SECRET_KEY=${SECRET_KEY:-please-change-this-secret-key}
     volumes:
       - ./website:/app
     labels:

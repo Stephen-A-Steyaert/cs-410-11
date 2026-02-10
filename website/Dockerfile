@@ -32,4 +32,4 @@ ENV PYTHONUNBUFFERED=1
 EXPOSE 8000
 
 # Run the application with gunicorn
-CMD ["gunicorn", "--bind", "0.0.0.0:8000", "--workers", "4", "--worker-class", "sync", "app:app"]
+CMD ["gunicorn", "--bind", "0.0.0.0:8000", "--workers", "4", "--worker-class", "sync", "main:app"]
