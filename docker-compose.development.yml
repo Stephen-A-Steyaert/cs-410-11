@@ -1,64 +1,13 @@
 services:
-  traefik:
-    image: traefik:v3.2
-    container_name: traefik
-    restart: unless-stopped
-    security_opt:
-      - no-new-privileges:true
-    ports:
-      - "80:80"
-      - "443:443"
-    env_file:
-      - .env.traefik
-    environment:
-      - TZ=America/New_York
-    volumes:
-      - /etc/localtime:/etc/localtime:ro
-      - /var/run/docker.sock:/var/run/docker.sock:ro
-      - ./traefik/traefik.yml:/traefik.yml:ro
-      - ./traefik/acme.json:/acme.json
-      - ./traefik/dynamic:/dynamic:ro
-    labels:
-      - "traefik.enable=true"
-      - "traefik.http.routers.traefik.entrypoints=http"
-      - "traefik.http.routers.traefik.rule=Host(`traefik.steyaert.xyz`)"
-      - "traefik.http.middlewares.traefik-auth.basicauth.users=admin:$$apr1$$..."  # Change this
-      - "traefik.http.middlewares.traefik-https-redirect.redirectscheme.scheme=https"
-      - "traefik.http.middlewares.sslheader.headers.customrequestheaders.X-Forwarded-Proto=https"
-      - "traefik.http.routers.traefik.middlewares=traefik-https-redirect"
-      - "traefik.http.routers.traefik-secure.entrypoints=https"
-      - "traefik.http.routers.traefik-secure.rule=Host(`traefik.steyaert.xyz`)"
-      - "traefik.http.routers.traefik-secure.middlewares=traefik-auth"
-      - "traefik.http.routers.traefik-secure.tls=true"
-      - "traefik.http.routers.traefik-secure.tls.certresolver=cloudflare"
-      - "traefik.http.routers.traefik-secure.tls.domains[0].main=steyaert.xyz"
-      - "traefik.http.routers.traefik-secure.tls.domains[0].sans=*.steyaert.xyz"
-      - "traefik.http.routers.traefik-secure.service=api@internal"
-    networks:
-      - proxy
 
   web:
-    image: ghcr.io/Stephen-A-Steyaert/cs-410-11:latest
+    image: ghcr.io/Stephen-Steyaert-ODU/cs-410-11:latest
     container_name: flask-app
     restart: unless-stopped
     environment:
       - FLASK_ENV=production
     volumes:
       - ./website:/app
-    labels:
-      - "traefik.enable=true"
-      - "traefik.http.routers.flask.entrypoints=http"
-      - "traefik.http.routers.flask.rule=Host(`cs.steyaert.xyz`)"
-      - "traefik.http.middlewares.flask-https-redirect.redirectscheme.scheme=https"
-      - "traefik.http.routers.flask.middlewares=flask-https-redirect"
-      - "traefik.http.routers.flask-secure.entrypoints=https"
-      - "traefik.http.routers.flask-secure.rule=Host(`cs.steyaert.xyz`)"
-      - "traefik.http.routers.flask-secure.tls=true"
-      - "traefik.http.routers.flask-secure.tls.certresolver=cloudflare"
-      - "traefik.http.routers.flask-secure.service=flask"
-      - "traefik.http.services.flask.loadbalancer.server.port=8000"
-    networks:
-      - proxy
 
 networks:
   proxy:

@@ -38,7 +38,7 @@ services:
       - proxy
 
   web:
-    image: ghcr.io/Stephen-A-Steyaert/cs-410-11:latest
+    image: ghcr.io/Stephen-Steyaert-ODU/cs-410-11:latest
     container_name: flask-app
     restart: unless-stopped
     environment:
