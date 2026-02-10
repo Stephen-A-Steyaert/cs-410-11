@@ -1,7 +1,7 @@
 services:
 
   web:
-    image: ghcr.io/Stephen-Steyaert-ODU/cs-410-11:latest
+    image: ghcr.io/${GITHUB_REPOSITORY}/flask-app:latest
     container_name: flask-app
     restart: unless-stopped
     environment:
