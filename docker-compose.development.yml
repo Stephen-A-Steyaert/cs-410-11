@@ -1,7 +1,5 @@
 services:
   web:
-    image: ghcr.io/${GITHUB_REPOSITORY}/flask-app:latest
-    container_name: flask-app
     build:
       context: ./website
       dockerfile: Dockerfile.dev
