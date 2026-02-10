@@ -1,0 +1,23 @@
+# Example: File-based routing (alternative to Docker labels)
+# Rename to routes.yml to enable
+
+http:
+  routers:
+    # Example Flask app route (if not using Docker labels)
+    # flask-app:
+    #   rule: "Host(`cs.steyaert.xyz`)"
+    #   entryPoints:
+    #     - https
+    #   service: flask-service
+    #   tls:
+    #     certResolver: cloudflare
+    #   middlewares:
+    #     - secureHeaders
+    #     - compression
+
+  services:
+    # Example service definition
+    # flask-service:
+    #   loadBalancer:
+    #     servers:
+    #       - url: "http://flask-app:8000"
