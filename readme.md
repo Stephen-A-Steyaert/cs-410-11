@@ -20,36 +20,46 @@ cd website
 uv sync
 
 # Run development server
-uv run flask run
+uv run python main.py
 ```
+
+Visit http://localhost:5000
+
+**Or use Docker for development:**
+```bash
+docker compose -f docker-compose.development.yml up
+```
+
+See [DEVELOPMENT.md](DEVELOPMENT.md) for detailed development guide.
 
 ### Production Deployment
 
 See detailed guides:
 - [Traefik Setup](TRAEFIK_SETUP.md) - HTTPS reverse proxy configuration
 - [GHCR Setup](GHCR_SETUP.md) - Automated Docker builds
+- [DEVELOPMENT.md](DEVELOPMENT.md) - Local development guide
 
 ## Project Structure
 
 ```
 .
-├── website/              # Flask application
-│   ├── Dockerfile       # Production Docker image
-│   ├── pyproject.toml   # Python dependencies (uv)
-│   └── app.py           # Main Flask app
-├── traefik/             # Traefik configuration
-│   ├── traefik.yml      # Main Traefik config
-│   └── dynamic/         # Dynamic configuration (auto-reload)
-│       ├── middlewares.yml
-│       ├── tls.yml
-│       └── README.md
-├── .github/
-│   └── workflows/
-│       ├── build-and-push.yml    # Auto-build to GHCR
-│       └── deploy.yml.example    # Auto-deploy example
-├── docker-compose.production.yml       # Local build
-├── docker-compose.production.yml.ghcr  # GHCR image
-└── deploy.sh            # Deployment helper script
+├── website/                      # Flask application
+│   ├── main.py                  # Flask app entry point
+│   ├── site_blueprints.py       # Route definitions
+│   ├── templates/               # Jinja2 templates
+│   ├── static/                  # CSS, JS, images
+│   ├── Dockerfile               # Production Docker image
+│   └── pyproject.toml           # Python dependencies (uv)
+├── traefik/                      # Traefik configuration
+│   ├── traefik.yml              # Main Traefik config
+│   └── dynamic/                 # Dynamic configuration (auto-reload)
+├── .github/workflows/
+│   ├── build-and-push.yml       # Auto-build to GHCR
+│   └── deploy.yml.example       # Auto-deploy example
+├── docker-compose.development.yml       # Development
+├── docker-compose.production.yml        # Production (local build)
+├── docker-compose.production.ghcr.yml   # Production (GHCR image)
+└── deploy.sh                            # Deployment helper script
 ```
 
 ## Deployment Options
@@ -89,10 +99,15 @@ Update domains in [docker-compose.production.yml](docker-compose.production.yml)
 
 ## Development Workflow
 
+**Local Development:**
 1. Make changes to your Flask app
-2. Commit and push to GitHub
-3. GitHub Actions builds and pushes to GHCR
-4. Run `./deploy.sh` on your server (or set up auto-deploy)
+2. Flask auto-reloads - just refresh your browser
+3. See [DEVELOPMENT.md](DEVELOPMENT.md) for details
+
+**Deployment:**
+1. Commit and push to GitHub
+2. GitHub Actions builds and pushes to GHCR
+3. Run `./deploy.sh` on your server (or set up auto-deploy)
 
 ## Security
 
@@ -104,6 +119,7 @@ Update domains in [docker-compose.production.yml](docker-compose.production.yml)
 
 ## Documentation
 
+- [DEVELOPMENT.md](DEVELOPMENT.md) - Local development guide
 - [TRAEFIK_SETUP.md](TRAEFIK_SETUP.md) - Complete Traefik configuration guide
 - [GHCR_SETUP.md](GHCR_SETUP.md) - GitHub Container Registry setup
 - [traefik/dynamic/README.md](traefik/dynamic/README.md) - Dynamic configuration
@@ -112,8 +128,8 @@ Update domains in [docker-compose.production.yml](docker-compose.production.yml)
 
 View logs:
 ```bash
-docker compose -f docker-compose.production.yml.ghcr logs -f web
-docker compose -f docker-compose.production.yml.ghcr logs -f traefik
+docker compose -f docker-compose.production.ghcr.yml logs -f web
+docker compose -f docker-compose.production.ghcr.yml logs -f traefik
 ```
 
 Check GitHub Actions builds:

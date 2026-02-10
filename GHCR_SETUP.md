@@ -44,10 +44,10 @@ Use the GHCR-specific compose file:
 
 ```bash
 # Pull latest image
-docker compose -f docker-compose.production.yml.ghcr --env-file .env.production pull web
+docker compose -f docker-compose.production.ghcr.yml --env-file .env.production pull web
 
 # Start services
-docker compose -f docker-compose.production.yml.ghcr --env-file .env.production up -d
+docker compose -f docker-compose.production.ghcr.yml --env-file .env.production up -d
 ```
 
 ## Development Workflow
@@ -66,8 +66,8 @@ git push origin main
 # 2. Wait for GitHub Actions to build (check Actions tab)
 
 # 3. On server, pull and restart
-docker compose -f docker-compose.production.yml.ghcr --env-file .env.production pull web
-docker compose -f docker-compose.production.yml.ghcr --env-file .env.production up -d web
+docker compose -f docker-compose.production.ghcr.yml --env-file .env.production pull web
+docker compose -f docker-compose.production.ghcr.yml --env-file .env.production up -d web
 ```
 
 ## Automatic Deployment (Optional)

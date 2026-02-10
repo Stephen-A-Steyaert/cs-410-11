@@ -1,14 +1,17 @@
 services:
-
   web:
     image: ghcr.io/${GITHUB_REPOSITORY}/flask-app:latest
     container_name: flask-app
+    build:
+      context: ./website
+      dockerfile: Dockerfile.dev
+    container_name: flask-app-dev
     restart: unless-stopped
     environment:
-      - FLASK_ENV=production
+      - FLASK_ENV=development
+      - FLASK_DEBUG=1
+      - SECRET_KEY=dev-secret-key-not-for-production
     volumes:
       - ./website:/app
-
-networks:
-  proxy:
-    external: true
+    ports:
+      - "5000:5000"

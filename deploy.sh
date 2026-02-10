@@ -4,7 +4,7 @@ set -e
 echo "🚀 Deploying Flask app from GHCR..."
 
 # Configuration
-COMPOSE_FILE="docker-compose.production.yml.ghcr"
+COMPOSE_FILE="docker-compose.production.ghcr.yml"
 ENV_FILE=".env.production"
 
 # Check if files exist
