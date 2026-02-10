@@ -8,7 +8,6 @@ __pycache__/
 # uv
 .venv/
 venv/
-.python-version
 
 # Flask
 instance/
