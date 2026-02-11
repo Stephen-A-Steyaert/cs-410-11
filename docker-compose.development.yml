@@ -9,7 +9,8 @@ services:
       - FLASK_ENV=development
       - FLASK_DEBUG=1
       - SECRET_KEY=dev-secret-key-not-for-production
+      - PORT=9000
     volumes:
       - ./website:/app
     ports:
-      - "9000:5000"
+      - "9000:9000"

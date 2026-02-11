@@ -15,19 +15,18 @@ Flask web application with automatic Docker builds to GitHub Container Registry 
 ### Local Development
 
 ```bash
-# Install dependencies with uv
-cd website
-uv sync
+# Install dependencies
+make sync
 
 # Run development server
-uv run python main.py
+make dev
 ```
 
-Visit http://localhost:5000
+Visit http://localhost:9000
 
 **Or use Docker for development:**
 ```bash
-docker compose -f docker-compose.development.yml up
+make dev-docker
 ```
 
 See [DEVELOPMENT.md](DEVELOPMENT.md) for detailed development guide.
@@ -66,7 +65,8 @@ See detailed guides:
 
 ### Option 1: Build Locally
 ```bash
-docker compose -f docker-compose.production.yml up -d
+make build
+make up
 ```
 
 ### Option 2: Use GHCR Images (Recommended)
@@ -76,7 +76,7 @@ cp .env.production.example .env.production
 # Edit .env.production with your GitHub username/repo
 
 # Deploy
-./deploy.sh
+make deploy
 ```
 
 ## Configuration
@@ -107,7 +107,7 @@ Update domains in [docker-compose.production.yml](docker-compose.production.yml)
 **Deployment:**
 1. Commit and push to GitHub
 2. GitHub Actions builds and pushes to GHCR
-3. Run `./deploy.sh` on your server (or set up auto-deploy)
+3. Run `make deploy` on your server (or set up auto-deploy)
 
 ## Security
 
@@ -128,9 +128,10 @@ Update domains in [docker-compose.production.yml](docker-compose.production.yml)
 
 View logs:
 ```bash
-docker compose -f docker-compose.production.ghcr.yml logs -f web
-docker compose -f docker-compose.production.ghcr.yml logs -f traefik
+make logs-web      # Flask app logs
+make logs-traefik  # Traefik logs
+make logs          # All logs
 ```
 
 Check GitHub Actions builds:
-- Go to repository → Actions tab
+- Go to repository -> Actions tab

@@ -7,12 +7,11 @@
 Run Flask directly on your machine for fastest development:
 
 ```bash
-cd website
-uv sync
-uv run python main.py
+make sync
+make dev
 ```
 
-Visit http://localhost:5000
+Visit http://localhost:9000
 
 **Features:**
 - Hot reload on file changes
@@ -24,10 +23,10 @@ Visit http://localhost:5000
 Run Flask in Docker for environment consistency:
 
 ```bash
-docker compose -f docker-compose.development.yml up
+make dev-docker
 ```
 
-Visit http://localhost:5000
+Visit http://localhost:9000
 
 **Features:**
 - Matches production environment
@@ -57,9 +56,8 @@ website/
 ## Adding Dependencies
 
 ```bash
-cd website
-uv add package-name
-uv sync
+make add PACKAGE=package-name
+# Example: make add PACKAGE=flask-cors
 ```
 
 ## Environment Variables
@@ -70,34 +68,28 @@ Create `website/.env` for local development:
 FLASK_ENV=development
 FLASK_DEBUG=1
 SECRET_KEY=dev-secret-key
-PORT=5000
+PORT=9000
 ```
 
 ## Common Tasks
 
 ### Run tests
 ```bash
-cd website
-uv run pytest
+make test
 ```
 
 ### Access Python shell
 ```bash
-cd website
-uv run python
+make shell
 >>> from main import app
 >>> app.config
 ```
 
 ### Clean up
 ```bash
-# Remove Python cache
-find . -type d -name __pycache__ -exec rm -r {} +
-find . -type f -name "*.pyc" -delete
-
-# Docker cleanup
-docker compose -f docker-compose.development.yml down
-docker system prune -f
+# Remove Python and Docker cleanup
+make down
+make clean
 ```
 
 ## Debugging
@@ -111,8 +103,7 @@ logging.basicConfig(level=logging.DEBUG)
 
 ### Check routes
 ```bash
-cd website
-uv run flask routes
+make routes
 ```
 
 ### Interactive debugger
@@ -145,7 +136,8 @@ Recommended `.vscode/launch.json`:
       "module": "flask",
       "env": {
         "FLASK_APP": "main.py",
-        "FLASK_DEBUG": "1"
+        "FLASK_DEBUG": "1",
+        "PORT": "9000"
       },
       "args": ["run", "--no-debugger", "--no-reload"],
       "jinja": true,
@@ -167,14 +159,12 @@ Recommended `.vscode/launch.json`:
 
 **Port already in use?**
 ```bash
-lsof -ti:5000 | xargs kill
+lsof -ti:9000 | xargs kill
 ```
 
 **Dependencies not installing?**
 ```bash
-cd website
-rm -rf .venv
-uv sync
+make clean-deps
 ```
 
 **Code changes not reflecting?**
@@ -184,6 +174,5 @@ uv sync
 
 **Import errors?**
 ```bash
-cd website
-uv run python -c "import flask; print(flask.__version__)"
+make check-version
 ```
