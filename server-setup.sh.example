@@ -24,10 +24,19 @@ if [ ! -d ".git" ]; then
     echo "🔧 Initializing git repository..."
     git init
     git remote add origin "$REPO_URL"
-    echo "📥 Pulling repository..."
+
+    # Configure sparse checkout to exclude website folder
+    # (website code comes from GHCR, not git)
+    echo "🔧 Configuring sparse checkout (excluding website folder)..."
+    git config core.sparseCheckout true
+    echo "/*" > .git/info/sparse-checkout
+    echo "!website/" >> .git/info/sparse-checkout
+
+    echo "📥 Pulling repository (infrastructure files only)..."
     git pull origin main
     echo ""
     echo "✅ Repository setup complete!"
+    echo "   Note: website/ folder excluded (code comes from GHCR)"
     echo ""
 else
     echo "✅ Repository already initialized"
