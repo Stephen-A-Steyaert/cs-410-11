@@ -43,26 +43,6 @@ if [ ${#MISSING_SECRETS[@]} -ne 0 ]; then
     exit 1
 fi
 
-# Create network if it doesn't exist
-if ! docker network ls | grep -q proxy; then
-    echo "📡 Creating overlay network 'proxy'..."
-    docker network create --driver overlay --attachable proxy
-fi
-
-# Create required directories on the swarm manager
-echo "📁 Creating required directories..."
-sudo mkdir -p /opt/traefik/dynamic
-# Create empty acme.json with proper permissions - Traefik will populate it
-if [ ! -f /opt/traefik/acme.json ]; then
-    sudo touch /opt/traefik/acme.json
-    sudo chmod 600 /opt/traefik/acme.json
-fi
-
-# Copy traefik config files to /opt/traefik
-echo "📋 Copying Traefik configuration..."
-sudo cp traefik/traefik.yml /opt/traefik/
-sudo cp -r traefik/dynamic/* /opt/traefik/dynamic/ 2>/dev/null || true
-
 # Load environment variables
 export $(grep -v '^#' $ENV_FILE | xargs)
 
@@ -86,7 +66,7 @@ docker stack services "$STACK_NAME"
 echo ""
 echo "To view logs:"
 echo "  docker service logs ${STACK_NAME}_web -f"
-echo "  docker service logs ${STACK_NAME}_traefik -f"
+echo "  docker service logs ${STACK_NAME}_proxy -f"
 echo ""
 echo "To scale the web service:"
 echo "  docker service scale ${STACK_NAME}_web=3"
