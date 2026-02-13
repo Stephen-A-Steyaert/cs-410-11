@@ -1,4 +1,4 @@
-.PHONY: help dev dev-docker build up down logs clean test deploy
+.PHONY: help dev dev-docker swarm-init swarm-secrets swarm-deploy swarm-down swarm-logs swarm-logs-web swarm-logs-traefik swarm-ps swarm-scale swarm-update swarm-rollback clean test deploy
 
 help: ## Show this help message
 	@echo 'Usage: make [target]'
@@ -12,16 +12,15 @@ dev: ## Run Flask development server locally
 dev-docker: ## Run Flask in Docker for development
 	docker compose -f docker-compose.development.yml up
 
-build: ## Build production Docker image
-	docker compose -f docker-compose.production.yml build
+# Docker Swarm commands
+swarm-init: ## Initialize Docker Swarm
+	docker swarm init
 
-up: ## Start production services (local build)
-	docker compose -f docker-compose.production.yml up -d
+swarm-secrets: ## Set up Docker Swarm secrets
+	./setup-secrets.sh
 
-down: ## Stop all services
-	docker compose -f docker-compose.development.yml down
-	docker compose -f docker-compose.production.yml down
-	docker compose -f docker-compose.production.ghcr.yml down
+swarm-deploy: ## Deploy to Docker Swarm using GHCR image
+	./deploy-swarm.sh
 
 logs: ## View logs from running containers
 	docker compose -f docker-compose.production.yml logs -f
@@ -37,8 +36,8 @@ install: ## Install Python dependencies
 test: ## Run tests (when implemented)
 	cd website && uv run pytest
 
-deploy: ## Deploy using GHCR image
-	./deploy.sh
+deploy: ## Alias for swarm-deploy
+	./deploy-swarm.sh
 
 sync: ## Sync dependencies to lock file
 	cd website && uv sync

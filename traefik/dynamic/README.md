@@ -6,7 +6,6 @@ This directory contains dynamic configuration files that Traefik watches and rel
 
 - **middlewares.yml** - HTTP middlewares (security headers, rate limiting, CORS, compression)
 - **tls.yml** - TLS/SSL configuration (cipher suites, TLS versions)
-- **routes.yml.example** - Example file-based routing (rename to `.yml` to enable)
 
 ## How It Works
 
@@ -38,4 +37,4 @@ labels:
 
 ## Current Setup
 
-Routes are currently defined via **Docker labels** in [docker-compose.production.yml](../../docker-compose.production.yml). You can optionally define routes here instead by creating a `routes.yml` file (see example file).
+Routes are currently defined via **Docker Swarm labels** in the docker-swarm files. The middlewares and TLS settings defined here are available to be referenced by those labels.

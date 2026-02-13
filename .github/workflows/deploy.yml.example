@@ -25,11 +25,17 @@ jobs:
           key: ${{ secrets.DEPLOY_SSH_KEY }}
           script: |
             cd /path/to/your/app
-            docker compose -f docker-compose.production.yml.ghcr --env-file .env.production pull web
-            docker compose -f docker-compose.production.yml.ghcr --env-file .env.production up -d web
-            docker image prune -f
+            make swarm-update
 
 # Required secrets (Settings → Secrets → Actions):
 # - DEPLOY_HOST: your server IP or domain
-# - DEPLOY_USER: SSH username
-# - DEPLOY_SSH_KEY: Private SSH key
+# - DEPLOY_USER: SSH username (must have access to docker and the app directory)
+# - DEPLOY_SSH_KEY: Private SSH key for authentication
+#
+# Setup:
+# 1. Generate SSH key pair: ssh-keygen -t ed25519 -C "github-actions" -f ~/.ssh/deploy_key
+# 2. Add public key to server: cat ~/.ssh/deploy_key.pub >> ~/.ssh/authorized_keys
+# 3. Add private key to GitHub Secrets as DEPLOY_SSH_KEY
+#
+# Note: This triggers a rolling update in Docker Swarm (zero downtime)
+# If something breaks, SSH into server and run: make swarm-rollback

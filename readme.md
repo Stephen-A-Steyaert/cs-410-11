@@ -88,14 +88,12 @@ cp .env.production.example .env.production
 
 ### Domain Configuration
 
-Update domains in [docker-compose.production.yml](docker-compose.production.yml):
-- `cs.steyaert.xyz` - Flask app
-- `traefik.steyaert.xyz` - Traefik dashboard
+Update domain in swarm files:
+- `copper.steyaert.xyz` - Flask app
 
 ## Access
 
-- **Flask App**: https://cs.steyaert.xyz
-- **Traefik Dashboard**: https://traefik.steyaert.xyz
+- **Flask App**: https://copper.steyaert.xyz
 
 ## Development Workflow
 
@@ -111,15 +109,17 @@ Update domains in [docker-compose.production.yml](docker-compose.production.yml)
 
 ## Security
 
-- Automatic HTTPS via Let's Encrypt
-- Security headers (HSTS, XSS protection, etc.)
-- TLS 1.2+ only
-- Rate limiting available
-- Basic auth for Traefik dashboard
+- **Docker Secrets**: Encrypted storage for API keys and secrets
+- **Automatic HTTPS**: Let's Encrypt via Cloudflare DNS challenge
+- **Security headers**: HSTS, XSS protection, etc.
+- **TLS 1.2+ only**: Modern cipher suites
+- **Rate limiting**: Available via Traefik middlewares
 
 ## Documentation
 
 - [DEVELOPMENT.md](DEVELOPMENT.md) - Local development guide
+- [SWARM_SETUP.md](SWARM_SETUP.md) - Docker Swarm deployment
+- [SECRETS.md](SECRETS.md) - Managing Docker secrets
 - [TRAEFIK_SETUP.md](TRAEFIK_SETUP.md) - Complete Traefik configuration guide
 - [GHCR_SETUP.md](GHCR_SETUP.md) - GitHub Container Registry setup
 - [traefik/dynamic/README.md](traefik/dynamic/README.md) - Dynamic configuration
