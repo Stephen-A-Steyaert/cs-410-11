@@ -23,7 +23,7 @@ swarm-deploy: ## Deploy to Docker Swarm using GHCR image
 	./deploy-swarm.sh
 
 swarm-update: ## Update web service with latest GHCR image (rolling update)
-	@. .env.production && docker service update --image ghcr.io/$${GITHUB_REPOSITORY}/flask-app:latest flask-app_web
+	@export $$(grep -v '^#' .env.production | xargs) && docker service update --image ghcr.io/$${GITHUB_REPOSITORY}/flask-app:latest flask-app_web
 
 swarm-rollback: ## Rollback web service to previous version
 	docker service rollback flask-app_web
