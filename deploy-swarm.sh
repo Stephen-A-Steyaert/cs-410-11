@@ -28,7 +28,7 @@ if ! docker info | grep -q "Swarm: active"; then
 fi
 
 # Check if secrets exist
-REQUIRED_SECRETS=("flask_secret_key" "cf_api_email" "cf_dns_api_token")
+REQUIRED_SECRETS=("flask_secret_key")
 MISSING_SECRETS=()
 
 for secret in "${REQUIRED_SECRETS[@]}"; do
