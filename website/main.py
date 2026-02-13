@@ -1,11 +1,21 @@
 from flask import Flask
 from site_blueprints import blueprints
 from os import environ
+from pathlib import Path
 
 app = Flask(__name__)
 
-# Optional: Add configuration
-app.config['SECRET_KEY'] = environ.get('SECRET_KEY', 'dev-secret-key-change-in-production')
+# Read secret key from Docker secret or environment variable
+def get_secret(secret_name, env_var=None, default=None):
+    """Read secret from Docker secret file or environment variable."""
+    secret_path = Path(f'/run/secrets/{secret_name}')
+    if secret_path.exists():
+        return secret_path.read_text().strip()
+    if env_var and environ.get(env_var):
+        return environ.get(env_var)
+    return default
+
+app.config['SECRET_KEY'] = get_secret('flask_secret_key', 'SECRET_KEY', 'dev-secret-key-change-in-production')
 
 # Register blueprints
 app.register_blueprint(blueprints, url_prefix="")

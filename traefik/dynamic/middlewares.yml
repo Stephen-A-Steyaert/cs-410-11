@@ -38,7 +38,7 @@ http:
     cors-headers:
       headers:
         accessControlAllowOriginList:
-          - "https://cs.steyaert.xyz"
+          - "https://copper.steyaert.xyz"
         accessControlAllowMethods:
           - GET
           - POST
