@@ -18,6 +18,7 @@ instance/
 
 # Environment variables
 .env.local
+.env.production
 .flaskenv
 
 # IDE
@@ -52,3 +53,6 @@ yarn-error.log
 # Uploads (adjust based on your needs)
 uploads/
 media/
+
+# Server setup (prevent overwriting during git pull)
+server-setup.sh

@@ -16,8 +16,11 @@ ssh -A your-server
 
 cd /srv/classproject
 
-# Run the setup script (already on the server)
+# Copy the example script (first time only)
+cp server-setup.sh.example server-setup.sh
 chmod +x server-setup.sh
+
+# Run the setup script
 ./server-setup.sh
 ```
 
@@ -108,8 +111,9 @@ For regular application updates, see "Development Workflow" below.
 # 0. Connect with SSH agent forwarding
 ssh -A user@your-server
 
-# 1. Run the setup script (already on server)
+# 1. Copy and run the setup script
 cd /srv/classproject
+cp server-setup.sh.example server-setup.sh
 chmod +x server-setup.sh
 ./server-setup.sh
 # Your forwarded SSH key will be used for authentication
