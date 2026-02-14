@@ -1,4 +1,4 @@
-.PHONY: help dev dev-docker swarm-init swarm-secrets swarm-deploy swarm-down swarm-logs swarm-logs-web swarm-logs-proxy swarm-ps swarm-scale swarm-update swarm-rollback clean test deploy sync add install
+.PHONY: help dev dev-docker compose-deploy compose-up compose-down compose-logs compose-restart swarm-init swarm-secrets swarm-deploy swarm-down swarm-logs swarm-logs-web swarm-logs-proxy swarm-ps swarm-scale swarm-update swarm-rollback clean test deploy sync add install
 
 help: ## Show this help message
 	@echo 'Usage: make [target]'
@@ -11,6 +11,28 @@ dev: ## Run Flask development server locally
 
 dev-docker: ## Run Flask in Docker for development
 	docker compose -f docker-compose.development.yml up
+
+# Docker Compose production commands
+compose-deploy: ## Pull latest image and deploy with docker compose
+	@export $$(grep -v '^#' .env.production | xargs) && \
+	docker compose -f docker-compose.production.ghcr.yml pull && \
+	docker compose -f docker-compose.production.ghcr.yml up -d && \
+	docker image prune -f
+
+compose-up: ## Start services with docker compose (updates web if image changed)
+	@export $$(grep -v '^#' .env.production | xargs) && \
+	docker compose -f docker-compose.production.ghcr.yml pull web && \
+	docker compose -f docker-compose.production.ghcr.yml up -d web && \
+	docker image prune -f
+
+compose-down: ## Stop and remove docker compose services
+	docker compose -f docker-compose.production.ghcr.yml down
+
+compose-logs: ## View logs from docker compose services
+	docker compose -f docker-compose.production.ghcr.yml logs -f
+
+compose-restart: ## Restart docker compose services
+	docker compose -f docker-compose.production.ghcr.yml restart
 
 # Docker Swarm commands
 swarm-init: ## Initialize Docker Swarm
@@ -60,8 +82,11 @@ install: ## Install Python dependencies
 test: ## Run tests (when implemented)
 	cd website && uv run pytest
 
-deploy: ## Alias for swarm-deploy
-	./deploy-swarm.sh
+deploy: ## Alias for compose-deploy
+	@export $$(grep -v '^#' .env.production | xargs) && \
+	docker compose -f docker-compose.production.ghcr.yml pull && \
+	docker compose -f docker-compose.production.ghcr.yml up -d && \
+	docker image prune -f
 
 sync: ## Sync dependencies to lock file
 	cd website && uv sync
