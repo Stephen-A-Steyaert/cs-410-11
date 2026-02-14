@@ -1,5 +1,6 @@
 from flask import Flask
-from site_blueprints import blueprints
+from site_blueprints import blueprint
+from example_blueprints import example_blueprint
 from os import environ
 from pathlib import Path
 
@@ -18,7 +19,8 @@ def get_secret(secret_name, env_var=None, default=None):
 app.config['SECRET_KEY'] = get_secret('flask_secret_key', 'SECRET_KEY', 'dev-secret-key-change-in-production')
 
 # Register blueprints
-app.register_blueprint(blueprints, url_prefix="")
+app.register_blueprint(blueprint, url_prefix="")
+app.register_blueprint(example_blueprint, url_prefix='/development')
 
 if __name__ == "__main__":
     # This only runs when executing `python main.py` directly (development)
