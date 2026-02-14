@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask, url_for as flask_url_for
 from site_blueprints import blueprint
 from example_blueprints import example_blueprint
 from os import environ
@@ -17,6 +17,21 @@ def get_secret(secret_name, env_var=None, default=None):
     return default
 
 app.config['SECRET_KEY'] = get_secret('flask_secret_key', 'SECRET_KEY', 'dev-secret-key-change-in-production')
+
+# Automatic cache busting for static files
+@app.context_processor
+def override_url_for():
+    return dict(url_for=dated_url_for)
+
+def dated_url_for(endpoint, **values):
+    """Add file modification timestamp to static file URLs for cache busting."""
+    if endpoint == 'static':
+        filename = values.get('filename', None)
+        if filename:
+            file_path = Path(app.root_path) / 'static' / filename
+            if file_path.exists():
+                values['v'] = int(file_path.stat().st_mtime)
+    return flask_url_for(endpoint, **values)
 
 # Register blueprints
 app.register_blueprint(blueprint, url_prefix="")
