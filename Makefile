@@ -35,7 +35,7 @@ compose-restart: ## Restart docker compose services
 	docker compose -f docker-compose.production.ghcr.yml restart
 
 logs: ## View logs from running containers
-	docker compose -f docker-compose.production.yml logs -f
+	docker compose -f docker-compose.production.ghcr.yml logs -f
 
 clean: ## Clean up Python cache and Docker resources
 	find . -type d -name __pycache__ -exec rm -r {} + 2>/dev/null || true
