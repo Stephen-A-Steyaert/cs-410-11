@@ -15,7 +15,7 @@
                 <h4 class="alert-heading">How This Works</h4>
                 <p>This template demonstrates Jinja2 template inheritance:</p>
                 <ul>
-                    <li><code>{% raw %}{% extends "base.html" %}{% endraw %}</code> - Extends the base template</li>
+                    <li><code>{% raw %}{{ url_for('home') }}{% endraw %}</code> - Sets the HREF, useful for anchor tags!</li>
                     <li><code>{% raw %}{% block title %}{% endraw %}</code> - Sets the page title</li>
                     <li><code>{% raw %}{% block content %}{% endraw %}</code> - Fills in the content area</li>
                 </ul>
@@ -35,7 +35,7 @@
             </div>
 
             <div class="mt-4">
-                <a href="{{url_for('home')}}" class="btn btn-outline-primary">← Back to Home</a>
+                <a href="{{ url_for('example') }}" class="btn btn-outline-primary">To Example Page</a>
             </div>
         </div>
     </div>
