@@ -5,28 +5,16 @@ services:
     environment:
       - FLASK_ENV=production
       - SECRET_KEY_FILE=/run/secrets/flask_secret_key
+      - VIRTUAL_HOST=copper.steyaert.xyz
+      - VIRTUAL_PORT=8000
     secrets:
       - flask_secret_key
     networks:
-      - proxy
-
-  proxy:
-    image: nginx:latest
-    restart: unless-stopped
-    ports:
-      - "80:80"
-      - "443:443"
-    volumes:
-      - /srv/classproject/nginx/copper.steyaert.xyz.conf:/etc/nginx/conf.d/default.conf:ro
-      - /srv/classproject/ssl:/etc/ssl/cloudflare:ro
-    networks:
-      - proxy
-    depends_on:
-      - web
+      - nginx-proxy
 
 networks:
-  proxy:
-    driver: bridge
+  nginx-proxy:
+    external: true
 
 secrets:
   flask_secret_key:
