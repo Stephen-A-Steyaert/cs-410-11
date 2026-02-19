@@ -1,6 +1,6 @@
 {# documentation: https://jinja.palletsprojects.com/en/stable/templates/ #}
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-bs-theme="dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,6 +9,7 @@
     <link href="{{ url_for('static', filename='css/base.css') }}" rel="stylesheet">
 </head>
 <body>
+    {% include 'components/navbar.html' %}
     {# using this makes it where you don't need to copy specific things every time, i.e. navbar, header, etc. #}
     {% block content %}{% endblock %}
     {# Only use next line if using dropdowns from bootstrap #}
