@@ -23,7 +23,7 @@ compose-up: ## Start services with docker compose (updates web if image changed)
 	@export $$(grep -v '^#' .env.production | xargs) && \
 	docker compose -f docker-compose.production.ghcr.yml --env-file .env.production pull web && \
 	docker compose -f docker-compose.production.ghcr.yml --env-file .env.production up -d web && \
-	docker image prune -f
+	docker image prune -af
 
 compose-down: ## Stop and remove docker compose services
 	docker compose -f docker-compose.production.ghcr.yml --env-file .env.production down
@@ -40,7 +40,7 @@ logs: ## View logs from running containers
 clean: ## Clean up Python cache and Docker resources
 	find . -type d -name __pycache__ -exec rm -r {} + 2>/dev/null || true
 	find . -type f -name "*.pyc" -delete
-	docker system prune -f
+	docker system prune -af
 
 install: ## Install Python dependencies
 	cd website && uv sync
