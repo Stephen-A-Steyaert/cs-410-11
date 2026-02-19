@@ -17,7 +17,7 @@ compose-deploy: ## Pull latest image and deploy with docker compose
 	@export $$(grep -v '^#' .env.production | xargs) && \
 	docker compose -f docker-compose.production.ghcr.yml --env-file .env.production pull && \
 	docker compose -f docker-compose.production.ghcr.yml --env-file .env.production up -d && \
-	docker image prune -f
+	docker image prune -af
 
 compose-up: ## Start services with docker compose (updates web if image changed)
 	@export $$(grep -v '^#' .env.production | xargs) && \
@@ -52,7 +52,7 @@ deploy: ## Alias for compose-deploy
 	@export $$(grep -v '^#' .env.production | xargs) && \
 	docker compose -f docker-compose.production.ghcr.yml --env-file .env.production pull && \
 	docker compose -f docker-compose.production.ghcr.yml --env-file .env.production up -d && \
-	docker image prune -f
+	docker image prune -af
 
 sync: ## Sync dependencies to lock file
 	cd website && uv sync
