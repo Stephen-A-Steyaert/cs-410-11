@@ -7,9 +7,11 @@
 Run Flask directly on your machine for fastest development:
 
 ```bash
-cd website
-uv sync
-uv run python main.py
+# Install dependencies
+make install
+
+# Run development server
+make dev
 ```
 
 Visit http://localhost:5000
@@ -24,7 +26,7 @@ Visit http://localhost:5000
 Run Flask in Docker for environment consistency:
 
 ```bash
-docker compose -f docker-compose.development.yml up
+make dev-docker
 ```
 
 Visit http://localhost:5000
@@ -57,6 +59,10 @@ website/
 ## Adding Dependencies
 
 ```bash
+# Add a new package
+make add PACKAGE=package-name
+
+# Or manually
 cd website
 uv add package-name
 uv sync
@@ -77,8 +83,7 @@ PORT=5000
 
 ### Run tests
 ```bash
-cd website
-uv run pytest
+make test
 ```
 
 ### Access Python shell
@@ -91,13 +96,12 @@ uv run python
 
 ### Clean up
 ```bash
-# Remove Python cache
-find . -type d -name __pycache__ -exec rm -r {} +
-find . -type f -name "*.pyc" -delete
+make clean
+```
 
-# Docker cleanup
-docker compose -f docker-compose.development.yml down
-docker system prune -f
+### Sync dependencies
+```bash
+make sync
 ```
 
 ## Debugging
@@ -163,6 +167,20 @@ Recommended `.vscode/launch.json`:
 - **Use Flask templates**: Don't put HTML in Python
 - **Static files**: Put in `static/`, reference with `url_for('static', filename='...')`
 
+## Makefile Commands
+
+This project uses a Makefile for common tasks. See [MAKEFILE.md](MAKEFILE.md) for complete documentation.
+
+**Development commands:**
+```bash
+make dev          # Run Flask development server locally
+make dev-docker   # Run Flask in Docker for development
+make install      # Install Python dependencies
+make add          # Add new dependency (usage: make add PACKAGE=flask-cors)
+make test         # Run tests
+make clean        # Clean up Python cache and Docker resources
+```
+
 ## Troubleshooting
 
 **Port already in use?**
@@ -172,6 +190,8 @@ lsof -ti:5000 | xargs kill
 
 **Dependencies not installing?**
 ```bash
+make install
+# Or manually reset
 cd website
 rm -rf .venv
 uv sync
@@ -179,7 +199,7 @@ uv sync
 
 **Code changes not reflecting?**
 - Check debug mode is enabled
-- Restart Flask server
+- Restart Flask server (Ctrl+C, then `make dev`)
 - Clear browser cache
 
 **Import errors?**

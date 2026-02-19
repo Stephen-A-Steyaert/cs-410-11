@@ -1,43 +1,38 @@
 # Website for Team Copper
 
-Flask web application with automatic Docker builds to GitHub Container Registry and Traefik reverse proxy for production deployment.
+Flask web application with automatic Docker builds to GitHub Container Registry and nginx-proxy for production deployment.
 
 ## Features
 
 - **Flask + Gunicorn** - Production-ready WSGI server
 - **uv** - Fast Python package management
-- **Traefik** - Automatic HTTPS with Let's Encrypt
+- **nginx-proxy** - Automatic HTTPS reverse proxy
 - **GHCR** - Automated Docker image builds
 - **Multi-architecture** - Supports AMD64 and ARM64
+- **Makefile** - Simple command interface for all operations
 
 ## Quick Start
 
 ### Local Development
 
 ```bash
-# Install dependencies with uv
-cd website
-uv sync
+# Install dependencies
+make install
 
 # Run development server
-uv run python main.py
+make dev
 ```
 
 Visit http://localhost:5000
 
 **Or use Docker for development:**
 ```bash
-docker compose -f docker-compose.development.yml up
+make dev-docker
 ```
 
-See [DEVELOPMENT.md](DEVELOPMENT.md) for detailed development guide.
-
-### Production Deployment
-
-See detailed guides:
-- [Traefik Setup](TRAEFIK_SETUP.md) - HTTPS reverse proxy configuration
-- [GHCR Setup](GHCR_SETUP.md) - Automated Docker builds
-- [DEVELOPMENT.md](DEVELOPMENT.md) - Local development guide
+**Documentation:**
+- [DEVELOPMENT.md](DEVELOPMENT.md) - Development guide
+- [MAKEFILE.md](MAKEFILE.md) - All available commands
 
 ## Project Structure
 
@@ -50,87 +45,72 @@ See detailed guides:
 │   ├── static/                  # CSS, JS, images
 │   ├── Dockerfile               # Production Docker image
 │   └── pyproject.toml           # Python dependencies (uv)
-├── traefik/                      # Traefik configuration
-│   ├── traefik.yml              # Main Traefik config
-│   └── dynamic/                 # Dynamic configuration (auto-reload)
 ├── .github/workflows/
-│   ├── build-and-push.yml       # Auto-build to GHCR
-│   └── deploy.yml.example       # Auto-deploy example
-├── docker-compose.development.yml       # Development
-├── docker-compose.production.yml        # Production (local build)
+│   ├── build-and-push.yml       # Auto-build to GHCR on push
+│   └── deploy.yml               # Auto-deploy to production server
+├── docker-compose.development.yml       # Development environment
 ├── docker-compose.production.ghcr.yml   # Production (GHCR image)
-└── deploy.sh                            # Deployment helper script
+├── Makefile                             # Command shortcuts
+├── MAKEFILE.md                          # Makefile documentation
+├── DEVELOPMENT.md                       # Development guide
+└── .env.production                      # Production environment config
 ```
 
-## Deployment Options
+## Production Deployment
 
-### Option 1: Build Locally
+### First Time Setup
 ```bash
-docker compose -f docker-compose.production.yml up -d
-```
-
-### Option 2: Use GHCR Images (Recommended)
-```bash
-# First time setup
+# Create environment file
 cp .env.production.example .env.production
-# Edit .env.production with your GitHub username/repo
-
-# Deploy
-./deploy.sh
+# Edit .env.production with your GitHub repository info:
+# GITHUB_REPOSITORY=yourusername/yourrepo
 ```
+
+### Deploy
+```bash
+make deploy
+```
+
+Pulls latest image from GHCR, updates containers, and cleans up old images.
 
 ## Configuration
 
 ### Environment Files
 
-- `.env.traefik` - Cloudflare API credentials
 - `.env.production` - GitHub repository info for GHCR
+  ```bash
+  GITHUB_REPOSITORY=yourusername/yourrepo
+  ```
 
 ### Domain Configuration
 
-Update domain in swarm files:
-- `copper.steyaert.xyz` - Flask app
+The Flask app is configured to run at `copper.steyaert.xyz` through nginx-proxy using the `VIRTUAL_HOST` environment variable in [docker-compose.production.ghcr.yml](docker-compose.production.ghcr.yml).
 
-## Access
+## Workflow
 
-- **Flask App**: https://copper.steyaert.xyz
+**Development:** `make dev` → edit code → Flask auto-reloads → refresh browser
 
-## Development Workflow
+**Deployment:** Push to GitHub → GitHub Actions builds → `make deploy` on server (or auto-deploy)
 
-**Local Development:**
-1. Make changes to your Flask app
-2. Flask auto-reloads - just refresh your browser
-3. See [DEVELOPMENT.md](DEVELOPMENT.md) for details
-
-**Deployment:**
-1. Commit and push to GitHub
-2. GitHub Actions builds and pushes to GHCR
-3. Run `./deploy.sh` on your server (or set up auto-deploy)
+See [DEVELOPMENT.md](DEVELOPMENT.md) and [MAKEFILE.md](MAKEFILE.md) for detailed workflows and all available commands.
 
 ## Security
 
-- **Docker Secrets**: Encrypted storage for API keys and secrets
-- **Automatic HTTPS**: Let's Encrypt via Cloudflare DNS challenge
-- **Security headers**: HSTS, XSS protection, etc.
-- **TLS 1.2+ only**: Modern cipher suites
-- **Rate limiting**: Available via Traefik middlewares
+- **Docker Secrets**: Encrypted storage for sensitive data (e.g., Flask secret key)
+- **Automatic HTTPS**: Managed by nginx-proxy with Let's Encrypt
+- **Production mode**: Debug mode disabled in production
+- **Environment isolation**: Separate development and production configurations
 
-## Documentation
+## Access
 
-- [DEVELOPMENT.md](DEVELOPMENT.md) - Local development guide
-- [SWARM_SETUP.md](SWARM_SETUP.md) - Docker Swarm deployment
-- [SECRETS.md](SECRETS.md) - Managing Docker secrets
-- [TRAEFIK_SETUP.md](TRAEFIK_SETUP.md) - Complete Traefik configuration guide
-- [GHCR_SETUP.md](GHCR_SETUP.md) - GitHub Container Registry setup
-- [traefik/dynamic/README.md](traefik/dynamic/README.md) - Dynamic configuration
+- **Production**: https://copper.steyaert.xyz
+- **Local Dev**: http://localhost:5000
 
 ## Troubleshooting
 
-View logs:
-```bash
-docker compose -f docker-compose.production.ghcr.yml logs -f web
-docker compose -f docker-compose.production.ghcr.yml logs -f traefik
-```
+- **View logs**: `make logs`
+- **Check builds**: Repository → Actions tab
+- **Port in use**: `lsof -ti:5000 | xargs kill`
+- **Force redeploy**: `make compose-down && make deploy`
 
-Check GitHub Actions builds:
-- Go to repository → Actions tab
+See [MAKEFILE.md](MAKEFILE.md) for all commands and [DEVELOPMENT.md](DEVELOPMENT.md) for development troubleshooting.
