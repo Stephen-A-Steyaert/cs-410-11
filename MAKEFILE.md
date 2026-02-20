@@ -172,7 +172,7 @@ cp .env.production.example .env.production
 **Development commands** (`make dev`, `make dev-docker`):
 - Use development configuration
 - Enable debug mode and hot reload
-- Run on http://localhost:5000
+- Run on http://localhost:5001
 - Don't require GHCR authentication
 
 **Production commands** (`make deploy`, `make compose-up`, etc.):

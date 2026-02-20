@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+
+{# documentation: https://jinja.palletsprojects.com/en/stable/templates/ #}
+
+{% set active_page = 'home' %}
+
+{% block title %}Example Page - Team Copper{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-lg-8 mx-auto">
+        <h1 class="display-4 mb-4">Example Page</h1>
+        <p class="lead">This is an example page that extends from base.html</p>
+
+        <div class="alert alert-info" role="alert">
+            <h4 class="alert-heading">How This Works</h4>
+            <p>This template demonstrates Jinja2 template inheritance:</p>
+            <ul>
+                <li><code>{% raw %}{{ url_for('blueprint.home') }}{% endraw %}</code> - Sets the HREF, useful for anchor tags!</li>
+                <li><code>{% raw %}{{ url_for('development_example.example') }}{% endraw %}</code> - Goes to the Example Route</li>
+                <li><code>{% raw %}{% block title %}{% endblock %}{% endraw %}</code> - Sets the page title</li>
+                <li><code>{% raw %}{% block content %}{% endblock %}{% endraw %}</code> - Fills in the main content area</li>
+            </ul>
+            <p class="mb-0">Bootstrap 5.3.8 is already included from the base template!</p>
+        </div>
+
+        <div class="card mt-4">
+            <div class="card-header">
+                <h5 class="mb-0">Bootstrap Components Example</h5>
+            </div>
+            <div class="card-body">
+                <p>You can use all Bootstrap components here:</p>
+                <button type="button" class="btn btn-primary">Primary Button</button>
+                <button type="button" class="btn btn-secondary">Secondary Button</button>
+                <button type="button" class="btn btn-success">Success Button</button>
+            </div>
+        </div>
+
+        <div class="mt-4">
+            <a href="{{ url_for('development_example.example') }}" class="btn btn-outline-primary">To Example Page</a>
+        </div>
+    </div>
+</div>
+{% endblock %}

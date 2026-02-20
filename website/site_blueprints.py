@@ -5,3 +5,7 @@ blueprint = Blueprint('blueprint', __name__, static_folder='static', template_fo
 @blueprint.route('/')
 def home():
     return render_template("home.html")
+
+@blueprint.route('/bios')
+def bios():
+    return render_template('bios.html')

@@ -23,7 +23,7 @@ make install
 make dev
 ```
 
-Visit http://localhost:5000
+Visit http://localhost:5001
 
 **Or use Docker for development:**
 ```bash
@@ -104,13 +104,13 @@ See [DEVELOPMENT.md](DEVELOPMENT.md) and [MAKEFILE.md](MAKEFILE.md) for detailed
 ## Access
 
 - **Production**: https://copper.steyaert.xyz
-- **Local Dev**: http://localhost:5000
+- **Local Dev**: http://localhost:5001
 
 ## Troubleshooting
 
 - **View logs**: `make logs`
 - **Check builds**: Repository → Actions tab
-- **Port in use**: `lsof -ti:5000 | xargs kill`
+- **Port in use**: `lsof -ti:5001 | xargs kill`
 - **Force redeploy**: `make compose-down && make deploy`
 
 See [MAKEFILE.md](MAKEFILE.md) for all commands and [DEVELOPMENT.md](DEVELOPMENT.md) for development troubleshooting.
