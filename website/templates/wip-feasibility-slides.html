@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% from 'components/presentation-iframe.html' import presentation_iframe %}
+{% set active_page = 'wipFeas' %}
+{% block title %}Work-In-Progress Feasibility Presentation{% endblock %}
+
+{% block css %}
+<link href="{{ url_for('static', filename='css/feasibility.css') }}" rel="stylesheet">
+{% endblock %}
+
+{% block content %}
+<p class="h3 text-center">Work-In-Progress Feasibility Presentation</p>
+{{ presentation_iframe("https://docs.google.com/presentation/d/e/2PACX-1vRMSXQYjl31FO0IjspPz4Jf84eGzkoyVn8fO_7WzmLTxlT175IdsU4QMPkK-_zxE-5A1no46QiI-hx5/pubembed?start=false&loop=true&delayms=3000") }}
+{% endblock %}

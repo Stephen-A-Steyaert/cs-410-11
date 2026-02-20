@@ -9,3 +9,11 @@ def home():
 @blueprint.route('/bios')
 def bios():
     return render_template('bios.html')
+@blueprint.route('/feasibility-v1')
+
+def feasibility_version_one():
+    return render_template('feasibility-slides-version-1.html')
+
+@blueprint.route('/wip-feasibility')
+def wip_feasibility():
+    return render_template('wip-feasibility-slides.html')
