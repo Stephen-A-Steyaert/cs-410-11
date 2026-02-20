@@ -6,22 +6,12 @@ COPY --from=ghcr.io/astral-sh/uv:latest /uv /usr/local/bin/uv
 # Set working directory
 WORKDIR /app
 
-# Copy dependency files
-COPY pyproject.toml uv.lock* ./
-
-# Install dependencies including dev dependencies
-RUN uv sync --frozen
-
-# Copy application code
-COPY . .
-
 # Set environment variables
-ENV PATH="/app/.venv/bin:$PATH"
 ENV PYTHONUNBUFFERED=1
 ENV FLASK_APP=main.py
 
 # Expose Flask development port
 EXPOSE 5001
 
-# Run development server with auto-reload
-CMD ["python", "main.py"]
+# Install dependencies at startup and run the app
+CMD ["sh", "-c", "uv sync --frozen && uv run python main.py"]
