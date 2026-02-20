@@ -1,0 +1,10 @@
+{% macro bio_card(name, role, image, bio_text) %}
+<div class="card mb-4 text-center text-bg-secondary shadow-lg bio-card">
+    <img src="{{ image }}" class="card-img-top" alt="{{ name }}">
+    <div class="card-body">
+        <h5 class="card-title">{{ name }}</h5>
+        <h6 class="card-subtitle mb-2 text-muted">Role: {{ role }}</h6>
+        <p class="card-text">{{ bio_text }}</p>
+    </div>
+</div>
+{% endmacro %}

@@ -21,7 +21,7 @@ ENV PYTHONUNBUFFERED=1
 ENV FLASK_APP=main.py
 
 # Expose Flask development port
-EXPOSE 5000
+EXPOSE 5001
 
 # Run development server with auto-reload
 CMD ["python", "main.py"]

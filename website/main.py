@@ -43,6 +43,6 @@ if __name__ == "__main__":
     debug = environ.get('FLASK_ENV') != 'production'
     app.run(
         host='0.0.0.0',
-        port=int(environ.get('PORT', 5000)),
+        port=int(environ.get('PORT', 5001)),
         debug=debug
     )
