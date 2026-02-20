@@ -4,6 +4,7 @@
   padding-bottom: 59.27%; /* 569/960 = 0.5927 aspect ratio */
   height: 0;
   overflow: hidden;
+  margin-bottom: 3rem;
 }
 
 .responsive-iframe-container iframe {
