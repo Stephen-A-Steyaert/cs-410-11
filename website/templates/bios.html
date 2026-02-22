@@ -9,24 +9,24 @@
 <h1 class="text-center mb-5">Meet Our Team!</h1>
 <div class="row">
     <div class="col-md-4">
-        {{ bio_card("Dawson Fromm", "Database Specialist", "/static/images/person1.jpg", "Bio text for person 1 goes here.") }}
+        {{ bio_card("Dawson Fromm", "Database Specialist", "{{ url_for('static', filename='images/dawson-fromm.jpg') }}", "Bio text for person 1 goes here.") }}
     </div>
     <div class="col-md-4">
-        {{ bio_card("Carlycia Mathis", "Document Specialist", "/static/images/person2.jpg", "Bio text for person 2 goes here.") }}
+        {{ bio_card("Carlycia Mathis", "Document Specialist", "{{ url_for('static', filename='images/carlycia-mathis.jpg') }}", "Bio text for person 2 goes here.") }}
     </div>
     <div class="col-md-4">
-        {{ bio_card("Aaron Killingbeck", "Backend Developer", "/static/images/person3.jpg", "Bio text for person 3 goes here.") }}
+        {{ bio_card("Aaron Killingbeck", "Backend Developer", "{{ url_for('static', filename='images/aaron-killingbeck.jpg') }}", "Bio text for person 3 goes here.") }}
     </div>
 </div>
 <div class="row">
     <div class="col-md-4">
-        {{ bio_card("James Wile", "Position TBD", "/static/images/person4.jpg", "Bio text for person 4 goes here.") }}
+        {{ bio_card("James Wile", "Position TBD", "{{ url_for('static', filename='images/james-wile.jpg') }}", "Bio text for person 4 goes here.") }}
     </div>
     <div class="col-md-4">
-        {{ bio_card("Stephen Steyaert", "Team Lead / Backend Developer", "/static/images/stephen-steyaert.jpg", "Stephen is a Senior pursuing a BS in Computer Science with a minor in Cybersecurity at Old Dominion University. He has experience with Python, C++, and Java. In his free time, he plays some video games, and does some software development of his own.") }}
+        {{ bio_card("Stephen Steyaert", "Team Lead / Backend Developer", "{{ url_for('static', filename='images/stephen-steyaert.jpg') }}", "Stephen is a Senior pursuing a BS in Computer Science with a minor in Cybersecurity at Old Dominion University. He has experience with Python, C++, and Java. In his free time, he plays some video games, and does some software development of his own.") }}
     </div>
     <div class="col-md-4">
-        {{ bio_card("Nate Balcha", "Frontend Developer", "/static/images/nate-balcha.jpg", "Nate is a Senior pursuing a BS in Computer Science at ODU. He has experince with Java and C. In his free time, he likes to read book and travel.") }}
+        {{ bio_card("Nate Balcha", "Frontend Developer", "{{ url_for('static', filename='images/nate-balcha.jpg' }}", "Nate is a Senior pursuing a BS in Computer Science at ODU. He has experince with Java and C. In his free time, he likes to read book and travel.") }}
     </div>
 </div>
 {% endblock %}
