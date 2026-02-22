@@ -15,14 +15,14 @@
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="{% block og_url %}https://pathpilot.steyaert.xyz{{ request.path }}{% endblock %}">
-    <meta property="og:title" content="{% block og_title %}{% block title %}Document{% endblock %} - PathPilot{% endblock %}">
+    <meta property="og:title" content="{% block og_title %}PathPilot{% endblock %}">
     <meta property="og:description" content="{% block og_description %}PathPilot - Team Copper's project for ODU Computer Science{% endblock %}">
     <meta property="og:image" content="{% block og_image %}https://pathpilot.steyaert.xyz{{ url_for('static', filename='images/og-image.png') }}{% endblock %}">
 
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image">
     <meta property="twitter:url" content="{% block twitter_url %}https://pathpilot.steyaert.xyz{{ request.path }}{% endblock %}">
-    <meta property="twitter:title" content="{% block twitter_title %}{% block title %}Document{% endblock %} - PathPilot{% endblock %}">
+    <meta property="twitter:title" content="{% block twitter_title %}PathPilot{% endblock %}">
     <meta property="twitter:description" content="{% block twitter_description %}PathPilot - Team Copper's project for ODU Computer Science{% endblock %}">
     <meta property="twitter:image" content="{% block twitter_image %}https://pathpilot.steyaert.xyz{{ url_for('static', filename='images/og-image.png') }}{% endblock %}">
 
