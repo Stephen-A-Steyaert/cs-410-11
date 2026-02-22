@@ -1,4 +1,4 @@
-from flask import Flask, url_for as flask_url_for
+from flask import Flask, url_for as flask_url_for, send_from_directory, request
 from site_blueprints import blueprint
 from example_blueprints import example_blueprint
 from os import environ
@@ -32,6 +32,17 @@ def dated_url_for(endpoint, **values):
             if file_path.exists():
                 values['v'] = int(file_path.stat().st_mtime)
     return flask_url_for(endpoint, **values)
+
+# Make request available in all templates
+@app.context_processor
+def inject_request():
+    """Make request object available in all templates."""
+    return dict(request=request)
+
+# Route for robots.txt
+@app.route('/robots.txt')
+def robots():
+    return send_from_directory(Path(app.root_path) / 'static', 'robots.txt')
 
 # Register blueprints
 app.register_blueprint(blueprint, url_prefix="")
