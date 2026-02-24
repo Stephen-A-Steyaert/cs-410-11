@@ -7,6 +7,17 @@
 {% block description %}Meet Team Copper - talented Computer Science students at Old Dominion University working on GradPace. Learn about our team members and their roles.{% endblock %}
 {% block keywords %}Team Copper, ODU Computer Science, GradPace team, student developers, software engineering team{% endblock %}
 
+{% block css %}
+<style>
+    /* Crop Carlycia's image to remove black borders */
+    .row:first-of-type .col-md-4:nth-child(2) .card-img-top {
+        object-fit: cover;
+        object-position: center;
+        height: 390px;
+    }
+</style>
+{% endblock %}
+
 {% block content %}
 <h1 class="text-center mb-5">Meet Our Team!</h1>
 <div class="row mb-4">
