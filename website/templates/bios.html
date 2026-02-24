@@ -15,6 +15,13 @@
         object-position: center;
         height: 390px;
     }
+
+    /* Crop JJ's image higher to hide bathroom items */
+    .row:nth-of-type(2) .col-md-4:nth-child(1) .card-img-top {
+        object-fit: cover;
+        object-position: center 15%;
+        height: 390px;
+    }
 </style>
 {% endblock %}
 
