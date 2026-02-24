@@ -103,7 +103,7 @@ See [DEVELOPMENT.md](DEVELOPMENT.md) and [MAKEFILE.md](MAKEFILE.md) for detailed
 
 ## Access
 
-- **Production**: https://copper.steyaert.xyz
+- **Production**: https://gradpace.steyaert.xyz
 - **Local Dev**: http://localhost:5001
 
 ## Troubleshooting
