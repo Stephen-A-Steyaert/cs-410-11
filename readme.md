@@ -13,8 +13,16 @@ Flask web application with automatic Docker builds to GitHub Container Registry 
 
 ## Quick Start
 
-### Local Development
+### Local Development (Recommended: Docker)
 
+```bash
+# Run development server with Docker
+make dev-docker
+```
+
+Visit http://localhost:5001
+
+**Or run without Docker:**
 ```bash
 # Install dependencies
 make install
@@ -24,11 +32,6 @@ make dev
 ```
 
 Visit http://localhost:5001
-
-**Or use Docker for development:**
-```bash
-make dev-docker
-```
 
 **Documentation:**
 - [DEVELOPMENT.md](DEVELOPMENT.md) - Development guide
@@ -88,7 +91,7 @@ The Flask app is configured to run at `copper.steyaert.xyz` through nginx-proxy 
 
 ## Workflow
 
-**Development:** `make dev` → edit code → Flask auto-reloads → refresh browser
+**Development:** `make dev-docker` → edit code → Flask auto-reloads (via volume mount) → refresh browser
 
 **Deployment:** Push to GitHub → GitHub Actions builds → `make deploy` on server (or auto-deploy)
 
