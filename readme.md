@@ -23,6 +23,9 @@ make dev-docker
 Visit http://localhost:5001
 
 **Or run without Docker:**
+
+*Requires [uv](https://docs.astral.sh/uv/) to be installed*
+
 ```bash
 # Install dependencies
 make install
