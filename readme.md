@@ -8,7 +8,7 @@ Flask web application with automatic Docker builds to GitHub Container Registry 
 - **uv** - Fast Python package management
 - **nginx-proxy** - Automatic HTTPS reverse proxy
 - **GHCR** - Automated Docker image builds
-- **Multi-architecture** - Supports AMD64 and ARM64
+- **Multi-architecture** - Supports AMD64
 - **Makefile** - Simple command interface for all operations
 
 ## Quick Start
