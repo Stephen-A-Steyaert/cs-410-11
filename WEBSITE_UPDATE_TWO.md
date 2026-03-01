@@ -1,5 +1,7 @@
 # Website Update 2 To Do:
 
+# Need a Logo ASAP
+
 ## Navbar
 - [ ] Move Bios to Main part of Navbar
 - [ ] Add Deliverables Tab w/ subsections
