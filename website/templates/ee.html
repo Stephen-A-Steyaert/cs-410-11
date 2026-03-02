@@ -1,0 +1,91 @@
+{% extends 'base.html' %}
+
+{% set show_navbar = false %}
+
+{% block title %}Secret{% endblock %}
+
+{% block css %}
+<style>
+    .grace-container {
+        max-width: 700px;
+        margin: 0 auto;
+        padding: 2rem;
+    }
+
+    .verse-section {
+        margin-bottom: 2.5rem;
+        padding: 1.5rem;
+        background-color: rgba(255, 255, 255, 0.05);
+        border-left: 4px solid #0d6efd;
+        border-radius: 4px;
+    }
+
+    .verse-reference {
+        font-weight: bold;
+        color: #0d6efd;
+        margin-bottom: 0.5rem;
+        font-size: 1.1rem;
+    }
+
+    .verse-text {
+        line-height: 1.8;
+        font-size: 1.05rem;
+    }
+
+    .intro-text {
+        text-align: center;
+        margin-bottom: 3rem;
+        font-style: italic;
+        color: #adb5bd;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="grace-container">
+    <h1 class="text-center mb-4">You Found It</h1>
+
+    <p class="intro-text">
+        For by grace you have been saved through faith...
+    </p>
+
+    <div class="verse-section">
+        <div class="verse-reference">Romans 3:23 (NASB1995)</div>
+        <div class="verse-text">
+            for all have sinned and fall short of the glory of God
+        </div>
+    </div>
+
+    <div class="verse-section">
+        <div class="verse-reference">John 3:16 (NASB1995)</div>
+        <div class="verse-text">
+            "For God so loved the world, that He gave His only begotten Son, that whoever believes in Him shall not perish, but have eternal life.
+        </div>
+    </div>
+
+    <div class="verse-section">
+        <div class="verse-reference">Romans 5:8-9 (NASB1995)</div>
+        <div class="verse-text">
+            But God demonstrates His own love toward us, in that while we were yet sinners, Christ died for us. Much more then, having now been justified by His blood, we shall be saved from the wrath of God through Him.
+        </div>
+    </div>
+
+    <div class="verse-section">
+        <div class="verse-reference">Ephesians 2:8-9 (NASB1995)</div>
+        <div class="verse-text">
+            For by grace you have been saved through faith; and that not of yourselves, <em>it is</em> the gift of God; not as a result of works, so that no one may boast.
+        </div>
+    </div>
+
+    <div class="verse-section">
+        <div class="verse-reference">1 John 4:9-10 (NASB1995)</div>
+        <div class="verse-text">
+            By this the love of God was manifested in us, that God has sent His only begotten Son into the world so that we might live through Him. In this is love, not that we loved God, but that He loved us and sent His Son to be the propitiation for our sins.
+        </div>
+    </div>
+
+    <div class="text-center mt-5">
+        <a href="{{ url_for('blueprint.home') }}" class="btn btn-outline-primary">Return Home</a>
+    </div>
+</div>
+{% endblock %}

@@ -21,3 +21,11 @@ def feasibility_version_two():
 @blueprint.route('/wip-feasibility')
 def wip_feasibility():
     return render_template('wip-feasibility-slides.html')
+
+@blueprint.route('/references')
+def references():
+    return render_template('references.html')
+
+@blueprint.route('/easter-egg')
+def easter_egg():
+    return render_template('ee.html')

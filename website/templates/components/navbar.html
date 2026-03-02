@@ -9,13 +9,14 @@
         <li class="nav-item">
           <a class="nav-link {{ 'active' if active_page == 'home' }}" aria-current="page" href="{{url_for('blueprint.home')}}">Home</a>
         </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            About
-          </a>
-          <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="{{url_for('blueprint.bios')}}">Our Team</a></li>
-          </ul>
+        <li class="nav-item">
+          <a class="nav-link {{ 'active' if active_page == 'bios' }}" aria-current="page" href="{{url_for('blueprint.bios')}}">About Us</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link {{ 'active' if active_page == 'problem' }}" aria-current="page" href="{{url_for('blueprint.bios')}}">Problem</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link {{ 'active' if active_page == 'solution' }}" aria-current="page" href="{{url_for('blueprint.bios')}}">Solution</a>
         </li>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -26,6 +27,24 @@
           <li><a class="dropdown-item" href="{{url_for('blueprint.feasibility_version_two')}}">Feasibility Slides Version 2</a></li>
           <li><a class="dropdown-item" href="{{url_for('blueprint.wip_feasibility')}}">Work-In-Progress Feasibility Slides</a></li>
         </ul>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Deliverables
+        </a>
+        <ul class="dropdown-menu">
+          <li><a class="dropdown-item" href="#">Current Process Flow</a></li>
+          <li><a class="dropdown-item" href="#">Solution Process Flow</a></li>
+          <li><a class="dropdown-item" href="#">Major Functional Components Diagram</a></li>
+          <li><a class="dropdown-item" href="#">Competition Matrix</a></li>
+          <li><a class="dropdown-item" href="#">Risk Matrices</a></li>
+        </ul>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link {{ 'active' if active_page == 'references' }}" aria-current="page" href="{{url_for('blueprint.references')}}">References</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link {{ 'active' if active_page == 'glossary' }}" aria-current="page" href="#">Glossary</a>
         </li>
       </ul>
     </div>

@@ -3,12 +3,12 @@
 # Need a Logo ASAP
 
 ## Navbar
-- [ ] Move Bios to Main part of Navbar
-- [ ] Add Deliverables Tab w/ subsections
-- [ ] Add References
-- [ ] Add Glossary
-- [ ] Problem Statement/Characteristics tab
-- [ ] Solution Statement/Characteristics tab
+- [x] Move Bios to Main part of Navbar
+- [x] Add Deliverables Tab w/ subsections
+- [x] Add References
+- [x] Add Glossary
+- [x] Problem Statement/Characteristics tab
+- [x] Solution Statement/Characteristics tab
 
 ## Home Page
 
@@ -42,4 +42,4 @@
 
 ## Footer
 
-- [ ] Add links to ODU and CS Department 
+- [x] Add links to ODU and CS Department 
