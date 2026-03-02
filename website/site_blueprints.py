@@ -25,3 +25,7 @@ def wip_feasibility():
 @blueprint.route('/references')
 def references():
     return render_template('references.html')
+
+@blueprint.route('/easter-egg')
+def easter_egg():
+    return render_template('ee.html')
