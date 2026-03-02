@@ -12,17 +12,17 @@
 
 ## Home Page
 
-- [ ] Project Title and Tagline
+- [x] Project Title and Tagline
 - [ ] Problem Statement with link to tab
 - [ ] Solution Statement with link to tab
 - [ ] Customers, End-Users and Stakeholders
 
 ## Presentation Section
 
-- [ ] Elevator Pitch 
-- [ ] All Feasibility iterations
-- [ ] Embed an `iframe` referencing your presentations
-- [ ] Presentations should also be available in PDF format
+- [ ] Elevator Pitch
+- [x] All Feasibility iterations (WIP Feas, Feas V1, Feas V2; Need feas 3)
+- [x] Embed an `iframe` referencing your presentations
+- [x] Presentations should also be available in PDF format
 
 ## Deliverables Section
 
@@ -34,7 +34,7 @@
 
 ## References Page
 
-- [ ] List all sources, citations, and references used in your project
+- [x] List all sources, citations, and references used in your project (Brown, Cengage Group, World Economic Forum)
 
 ## Glossary Page
 
