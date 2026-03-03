@@ -1,0 +1,79 @@
+{% extends "base.html" %}
+{% from 'components/flow-diagram.html' import flow_diagram %}
+
+{% set active_page = 'problem' %}
+
+{% block title %}The Problem{% endblock %}
+{% block description %}The Problem - GradPace by Team Copper. Addressing the disconnect between academic degree requirements and professional development opportunities for students.{% endblock %}
+{% block keywords %}The Problem, GradPace problem statement, Team Copper problem, student challenges, student career development issues, current process flow{% endblock %}
+
+
+{% block content %}
+
+<div class="container py-4">
+
+    <!-- Page Header -->
+    <div class="mb-4">
+        <h1 class="display-6">The Problem</h1>
+            <p class="lead">
+                Why students struggle to translate coursework into workforce readiness, and where the current process breaks.
+            </p>
+    </div>
+
+    <!-- Problem Description -->
+    <section id="problem-description" class="section-card">
+        <h2 class="section-title">The Problem</h2>
+            <p>
+                Universities clearly define academic degree requirements, yet professional development opportunities — including internships,
+                certifications, networking events, alumni engagement, and local experiences — exist across separate platforms and resources.
+                Students must independently connect their coursework to evolving market expectations without a unified, data-informed system
+                to identify skill gaps or find relevant opportunities in real time. This structural disconnect leads to reactive decision-making
+                and delayed workforce readiness.
+            </p>
+    </section>
+
+    <!-- Problem Characteristics -->
+    <section id="problem-characteristics" class="section-card">
+    <h2 class="section-title">Problem Characteristics</h2>
+
+    <ul class="mb-0">
+        <li class="mb-3">
+        <strong>Fragmented Academic & Opportunity Systems</strong>
+        <p class="mb-0">
+            Students must navigate DegreeWorks, Canvas, Handshake, LinkedIn, clubs, certifications, and advisors separately.
+            No unified system connects academic progress to local professional opportunities.
+        </p>
+        </li>
+
+        <li class="mb-3">
+        <strong>Reactive Career Engagement Model</strong>
+        <p class="mb-0">
+            Universities provide optional career resources that are passive and depend on student initiative.
+            Opportunities are time-sensitive but not dynamically matched to student progress.
+        </p>
+        </li>
+
+        <li>
+        <strong>Lack of Structured Skill Alignment</strong>
+        <p class="mb-0">
+            There is no structured comparison between academic progress, local employer expectations, and industry benchmarks.
+            Students lack clear visibility into missing credentials and role readiness.
+        </p>
+        </li>
+    </ul>
+    </section>
+
+    <!-- Current Process Flow -->
+    <section id="current-process-flow" class="section-card">
+        <h2 class="section-title">Current Process Flow</h2>
+        <p class="text-muted">
+            This diagram shows the current process flow and highlights where the process breaks.
+        </p>
+        {{ flow_diagram(
+            "Current Process Flow",
+            "images/flows/current-process-flow.png"
+        )}}
+    </section>
+</div>
+
+{% endblock %}
