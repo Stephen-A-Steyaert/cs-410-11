@@ -10,6 +10,10 @@ def home():
 def bios():
     return render_template('bios.html')
 
+@blueprint.route('/problem')
+def problem():
+    return render_template('problem.html')
+    
 @blueprint.route('/feasibility-v1')
 def feasibility_version_one():
     return render_template('feasibility-slides-version-1.html')
