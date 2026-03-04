@@ -24,7 +24,7 @@ def feasibility_version_two():
 
 @blueprint.route('/feasibility-v3')
 def feasibility_version_three():
-    return render_template('feasibility-slides-version-2.html')
+    return render_template('feasibility-slides-version-3.html')
 
 @blueprint.route('/wip-feasibility')
 def wip_feasibility():
