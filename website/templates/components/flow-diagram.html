@@ -1,6 +1,6 @@
 {% macro flow_diagram(title, image_path) %}
 <div class="d-flex justify-content-center">
-    <figure class="text-center m-0" style="max-width: 1100px;">
+    <figure class="text-center m-0" style="width: 100%;">
         <img
             src="{{url_for('static', filename=image_path) }}"
             alt="{{ title }}"
