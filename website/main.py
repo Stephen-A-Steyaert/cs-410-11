@@ -1,6 +1,5 @@
 from flask import Flask, url_for as flask_url_for, send_from_directory, request
 from site_blueprints import blueprint
-from example_blueprints import example_blueprint
 from os import environ
 from pathlib import Path
 
@@ -46,7 +45,6 @@ def robots():
 
 # Register blueprints
 app.register_blueprint(blueprint, url_prefix="")
-app.register_blueprint(example_blueprint, url_prefix='/development')
 
 if __name__ == "__main__":
     # This only runs when executing `python main.py` directly (development)
