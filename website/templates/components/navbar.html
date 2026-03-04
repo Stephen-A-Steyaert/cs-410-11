@@ -15,7 +15,7 @@
           <a class="nav-link {{ 'active' if active_page == 'bios' }}" aria-current="page" href="{{url_for('blueprint.bios')}}">About Us</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link {{ 'active' if active_page == 'problem' }}" aria-current="page" href="{{url_for('blueprint.bios')}}">Problem</a>
+          <a class="nav-link {{ 'active' if active_page == 'problem' }}" aria-current="page" href="{{url_for('blueprint.problem')}}">Problem</a>
         </li>
         <li class="nav-item">
           <a class="nav-link {{ 'active' if active_page == 'solution' }}" aria-current="page" href="{{url_for('blueprint.bios')}}">Solution</a>
@@ -35,7 +35,7 @@
             Deliverables
         </a>
         <ul class="dropdown-menu">
-          <li><a class="dropdown-item" href="#">Current Process Flow</a></li>
+          <li><a class="dropdown-item" href="{{ url_for('blueprint.problem') }}#current-process-flow">Current Process Flow</a></li>
           <li><a class="dropdown-item" href="#">Solution Process Flow</a></li>
           <li><a class="dropdown-item" href="#">Major Functional Components Diagram</a></li>
           <li><a class="dropdown-item" href="#">Competition Matrix</a></li>
