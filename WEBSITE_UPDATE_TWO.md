@@ -13,8 +13,8 @@
 ## Home Page
 
 - [x] Project Title and Tagline
-- [ ] Problem Statement with link to tab
-- [ ] Solution Statement with link to tab
+- [x] Problem Statement with link to tab
+- [x] Solution Statement with link to tab
 - [ ] Customers, End-Users and Stakeholders
 
 ## Presentation Section
@@ -26,7 +26,7 @@
 
 ## Deliverables Section
 
-- [ ] Current/Problem Process Flow
+- [x] Current/Problem Process Flow
 - [ ] Solution Process Flow
 - [ ] MFCD
 - [ ] Competition Matrix
