@@ -13,6 +13,10 @@ def bios():
 @blueprint.route('/problem')
 def problem():
     return render_template('problem.html')
+
+@blueprint.route('/solution')
+def solution():
+    return render_template('solution.html')
     
 @blueprint.route('/feasibility-v1')
 def feasibility_version_one():

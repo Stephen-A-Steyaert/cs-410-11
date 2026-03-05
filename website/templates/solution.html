@@ -1,0 +1,71 @@
+{% extends "base.html" %}
+{% from 'components/flow-diagram.html' import flow_diagram %}
+
+{% set active_page = 'solution' %}
+
+{% block title %}The Solution{% endblock %}
+{% block description %}The Solution - GradPace by Team Copper. Addressing the disconnect between academic degree requirements and professional development opportunities for students.{% endblock %}
+{% block keywords %}The Solution, GradPace solution statement, Team Copper solution, student challenges, student career development issues, current process flow{% endblock %}
+
+
+{% block content %}
+
+<!-- Page Header -->
+<div class="hero-section">
+    <h1 class="display-6">The Solution</h1>
+        <p class="lead">
+            Why students struggle to translate coursework into workforce readiness, and where the current process breaks.
+        </p>
+</div>
+
+<!-- Solution Description -->
+<section id="solution-description" class="section-card">
+    <h2 class="section-title">Solution Statement</h2>
+        <p>
+            GradPace is a university-integrated, Artificial-Intelligence-enabled career intelligence platform that connects academic progress with real-time professional opportunities. The system unifies academic records, local events, internships, certifications, and alumni engagement into a data-informed framework that continuously evaluates skill alignment and dynamically generates relevant next steps. By making readiness measurable and proactively matching students to opportunities, GradPace transforms reactive career navigation into structured, continuous development.
+        </p>
+</section>
+
+<!-- Solution Characteristics -->
+<section id="solution-characteristics" class="section-card">
+<h2 class="section-title">Solution Characteristics</h2>
+
+<ul class="mb-0">
+    <li class="mb-3">
+    <strong>Integrated Academic & Opportunity Intelligence</strong>
+    <p class="mb-0">
+        GradPace brings academic records, experiential activities, local events, internships, certifications, and alumni resources into a single, continuously updated system. Instead of navigating disconnected platforms, students receive a structured and comprehensive view of their academic and professional development in one place.
+    </p>
+    </li>
+
+    <li class="mb-3">
+    <strong>Proactive, Dynamic Opportunity Matching</strong>
+    <p class="mb-0">
+        GradPace continuously evaluates student progress and dynamically surfaces relevant opportunities based on skill development, academic standing, and career goals. Rather than manually monitoring listings, students receive prioritized, time-sensitive recommendations aligned with their trajectory.
+    </p>
+    </li>
+
+    <li>
+    <strong>Structured Skill Benchmarking & Readiness Transparency</strong>
+    <p class="mb-0">
+        GradPace defines career-specific readiness benchmarks and compares student progress against local employer expectations and industry standards. By making skill gaps visible and measurable early, students can evaluate their preparedness with clarity rather than assumption.
+    </p>
+    </li>
+</ul>
+</section>
+
+<!-- Current Process Flow -->
+<section id="solution-process-flow" class="section-card">
+    <h2 class="section-title">Solution Process Flow</h2>
+    <p>
+        {# TODO: Update this description - solution shouldn't highlight where process breaks #}
+        This diagram shows the solution process flow and highlights where the process breaks.
+    </p>
+    {# TODO: Upload solution process flow #}
+    {{ flow_diagram(
+        "Solution Process Flow",
+        "images/flows/solution-process-flow.png"
+    )}}
+</section>
+
+{% endblock %}
