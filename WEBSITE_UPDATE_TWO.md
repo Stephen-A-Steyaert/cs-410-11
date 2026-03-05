@@ -19,7 +19,6 @@
 
 ## Presentation Section
 
-- [ ] Elevator Pitch
 - [x] All Feasibility iterations (WIP Feas, Feas V1, Feas V2; Need feas 3)
 - [x] Embed an `iframe` referencing your presentations
 - [x] Presentations should also be available in PDF format
@@ -31,7 +30,8 @@
 - [ ] MFCD
 - [ ] Competition Matrix
 - [ ] Risk Matrices
-
+- [ ] Elevator Pitch
+      
 ## References Page
 
 - [x] List all sources, citations, and references used in your project (Brown, Cengage Group, World Economic Forum)
