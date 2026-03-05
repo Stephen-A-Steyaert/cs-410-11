@@ -18,7 +18,7 @@
           <a class="nav-link {{ 'active' if active_page == 'problem' }}" aria-current="page" href="{{url_for('blueprint.problem')}}">Problem</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link {{ 'active' if active_page == 'solution' }}" aria-current="page" href="{{url_for('blueprint.bios')}}">Solution</a>
+          <a class="nav-link {{ 'active' if active_page == 'solution' }}" aria-current="page" href="{{url_for('blueprint.solution')}}">Solution</a>
         </li>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -37,7 +37,7 @@
         </a>
         <ul class="dropdown-menu">
           <li><a class="dropdown-item" href="{{ url_for('blueprint.problem') }}#current-process-flow">Current Process Flow</a></li>
-          <li><a class="dropdown-item" href="#">Solution Process Flow</a></li>
+          <li><a class="dropdown-item" href="{{ url_for('blueprint.solution') }}#solution-process-flow">Solution Process Flow</a></li>
           <li><a class="dropdown-item" href="#">Major Functional Components Diagram</a></li>
           <li><a class="dropdown-item" href="#">Competition Matrix</a></li>
           <li><a class="dropdown-item" href="#">Risk Matrices</a></li>
