@@ -1,0 +1,106 @@
+{% extends 'base.html' %}
+{% from 'components/deliverable.html' import deliverable %}
+
+{% block title %}Deliverables{% endblock %}
+{% block description %}Deliverables - GradPace by Team Copper. Access project deliverables including process flows, diagrams, competition matrices, and risk assessments for our career intelligence platform.{% endblock %}
+{% block keywords %}GradPace deliverables, Team Copper deliverables, project documentation, process flows, functional components diagram, competition matrix, risk matrices, project artifacts{% endblock %}
+
+{% block css %}
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+{% endblock %}
+
+{% block content %}
+<!-- Page Header -->
+<div class="hero-section">
+    <h1 class="display-6">Deliverables</h1>
+</div>
+
+<!-- Current Process Flow -->
+<section id="pitch" class="section-card">
+    <h2 class="section-title">Original Pitch</h2>
+    
+    <div class="ratio ratio-16x9">
+        <!-- TODO: Change pdf name -->
+        <iframe 
+        
+            src="{{ url_for('static', filename='pdfs/placeholder.pdf') }}" 
+            type="application/pdf"
+            title="Document Title">
+        </iframe>
+    </div>
+    <!-- TODO: Change pdf name -->
+    <a href="{{ url_for('static', filename='pdfs/placeholder.pdf') }}" 
+        download class="btn btn-primary"
+    >
+        Download PDF <i class="bi bi-download"></i>
+    </a>
+</section>
+
+<!-- Current Process Flow -->
+<section id="current-process-flow" class="section-card">
+    <h2 class="section-title">Current Process Flow</h2>
+    <p>
+        This diagram shows the current process flow and highlights where the process breaks.
+    </p>
+    {{ deliverable(
+        "Current Process Flow",
+        "images/flows/current-process-flow.png"
+    )}}
+</section>
+
+<!-- Solution Process Flow -->
+<section id="solution-process-flow" class="section-card">
+    <h2 class="section-title">Solution Process Flow</h2>
+    <p>
+        <!-- TODO: Update this -->
+        This diagram shows the solution process flow and highlights where the process breaks.
+    </p>
+    {{ deliverable(
+        "Solution Process Flow",
+        "images/flows/solution-process-flow.png"
+    )}}
+</section>
+
+<!-- MFCD -->
+<section id="mfcd" class="section-card">
+    <h2 class="section-title">Major Functional Components Diagram</h2>
+    <p>
+        This diagram illustrates the planned functional components for the GradPace system, showing how modules will connect academic progress tracking with professional opportunity matching.
+    </p>
+    {{ deliverable(
+        "Major Functional Components Diagram",
+        "images/deliverables/MFCD.png"
+    )}}
+</section>
+
+<!-- Risk Matices -->
+<section id="risks" class="section-card">
+    <h2 class="section-title">Risk Matrices</h2>
+    <p>
+        <!-- TODO: Update this -->
+        Update this
+    </p>
+    {{ deliverable(
+        "Customer Risk Matrix",
+        "images/deliverables/customer-risk.png"
+    )}}
+    {{ deliverable(
+        "Technical Risk Matrix",
+        "images/deliverables/technical-risk.png"
+    )}}
+</section>
+
+<!-- Compition matrix -->
+<section id="competition-matrix" class="section-card">
+    <h2 class="section-title">Competition Matrix</h2>
+    <p>
+        <!-- TODO: Update this -->
+        Update this
+    </p>
+    {{ deliverable(
+        "Competition Matrix",
+        "images/deliverables/competition-matrix.png"
+    )}}
+</section>
+
+{% endblock %}

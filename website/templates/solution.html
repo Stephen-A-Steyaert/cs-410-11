@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% from 'components/flow-diagram.html' import flow_diagram %}
+{% from 'components/deliverable.html' import deliverable %}
 
 {% set active_page = 'solution' %}
 
@@ -62,7 +62,7 @@
         This diagram shows the solution process flow and highlights where the process breaks.
     </p>
     {# TODO: Upload solution process flow #}
-    {{ flow_diagram(
+    {{ deliverable(
         "Solution Process Flow",
         "images/flows/solution-process-flow.png"
     )}}
