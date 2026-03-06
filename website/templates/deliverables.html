@@ -7,6 +7,36 @@
 
 {% block css %}
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+<style>
+    /* Light theme - blue header and first column */
+    .competition-table thead th {
+        background-color: #0d6efd !important;
+        color: #fff !important;
+    }
+
+    .competition-table tbody td:first-child {
+        background-color: #0d6efd !important;
+        color: #fff !important;
+    }
+
+    /* Dark theme - pink header and first column */
+    @media (prefers-color-scheme: dark) {
+        .competition-table thead th {
+            background-color: #f06292 !important;
+            color: #fff !important;
+        }
+
+        .competition-table tbody td:first-child {
+            background-color: #f06292 !important;
+            color: #fff !important;
+        }
+
+        /* Brighter checkmarks for dark mode */
+        .competition-table .text-success {
+            color: #4ade80 !important;
+        }
+    }
+</style>
 {% endblock %}
 
 {% block content %}
@@ -90,17 +120,74 @@
     )}}
 </section>
 
-<!-- Compition matrix -->
+<!-- Competition matrix -->
 <section id="competition-matrix" class="section-card">
     <h2 class="section-title">Competition Matrix</h2>
     <p>
-        <!-- TODO: Update this -->
-        Update this
+        This matrix compares GradPace against existing career development tools and platforms, evaluating key features and competitive advantages.
     </p>
-    {{ deliverable(
-        "Competition Matrix",
-        "images/deliverables/competition-matrix.png"
-    )}}
+    <div class="table-responsive">
+        <table class="table table-bordered table-hover competition-table">
+            <thead>
+                <tr>
+                    <th>Features</th>
+                    <th>GradPace</th>
+                    <th>YouScience</th>
+                    <th>LinkedIn</th>
+                    <th>Handshake</th>
+                    <th>PathPilot</th>
+                    <th>Riipen</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Alumni connections</strong></td>
+                    <td class="text-center text-success"><i class="bi bi-check-circle-fill"></i></td>
+                    <td class="text-center"></td>
+                    <td class="text-center text-success"><i class="bi bi-check-circle-fill"></i></td>
+                    <td class="text-center"></td>
+                    <td class="text-center"></td>
+                    <td class="text-center"></td>
+                </tr>
+                <tr>
+                    <td><strong>Industry readiness benchmarking</strong></td>
+                    <td class="text-center text-success"><i class="bi bi-check-circle-fill"></i></td>
+                    <td class="text-center"></td>
+                    <td class="text-center"></td>
+                    <td class="text-center text-success"><i class="bi bi-check-circle-fill"></i></td>
+                    <td class="text-center text-success"><i class="bi bi-check-circle-fill"></i></td>
+                    <td class="text-center text-success"><i class="bi bi-check-circle-fill"></i></td>
+                </tr>
+                <tr>
+                    <td><strong>Early-Warning Gap detection</strong></td>
+                    <td class="text-center text-success"><i class="bi bi-check-circle-fill"></i></td>
+                    <td class="text-center"></td>
+                    <td class="text-center"></td>
+                    <td class="text-center"></td>
+                    <td class="text-center text-success"><i class="bi bi-check-circle-fill"></i></td>
+                    <td class="text-center"></td>
+                </tr>
+                <tr>
+                    <td><strong>Local context-aware events (GPS)</strong></td>
+                    <td class="text-center text-success"><i class="bi bi-check-circle-fill"></i></td>
+                    <td class="text-center text-success"><i class="bi bi-check-circle-fill"></i></td>
+                    <td class="text-center"></td>
+                    <td class="text-center"></td>
+                    <td class="text-center"></td>
+                    <td class="text-center"></td>
+                </tr>
+                <tr>
+                    <td><strong>Live Industry data (Requirement Sync)</strong></td>
+                    <td class="text-center text-success"><i class="bi bi-check-circle-fill"></i></td>
+                    <td class="text-center text-success"><i class="bi bi-check-circle-fill"></i></td>
+                    <td class="text-center text-success"><i class="bi bi-check-circle-fill"></i></td>
+                    <td class="text-center"></td>
+                    <td class="text-center text-success"><i class="bi bi-check-circle-fill"></i></td>
+                    <td class="text-center text-success"><i class="bi bi-check-circle-fill"></i></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
 </section>
 
 {% endblock %}
