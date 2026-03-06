@@ -34,6 +34,10 @@ def feasibility_version_three():
 def wip_feasibility():
     return render_template('wip-feasibility-slides.html')
 
+@blueprint.route('/deliverables')
+def deliverables():
+    return render_template('deliverables.html')
+
 @blueprint.route('/references')
 def references():
     return render_template('references.html')

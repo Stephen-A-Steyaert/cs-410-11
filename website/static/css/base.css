@@ -59,7 +59,7 @@ body {
     margin-bottom: 2rem;
 }
 
-.section-card:nth-of-type(2) {
+.section-card:nth-of-type(even) {
     border-left-color: #f06292;
 }
 
@@ -69,7 +69,7 @@ body {
     margin-bottom: 1rem;
 }
 
-.section-card:nth-of-type(2) .section-title {
+.section-card:nth-of-type(even) .section-title {
     color: #f06292;
 }
 
