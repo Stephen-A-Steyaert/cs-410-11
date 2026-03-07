@@ -23,6 +23,12 @@ body {
     margin-bottom: 1rem;
 }
 
+@media (prefers-color-scheme: dark) {
+    .bio-role {
+        color: #adb5bd;
+    }
+}
+
 .footer {
     margin-top: auto;
     padding: 1.5rem 0;
