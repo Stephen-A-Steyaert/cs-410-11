@@ -6,6 +6,10 @@
 {% block keywords %}GradPace deliverables, Team Copper deliverables, project documentation, process flows, functional components diagram, competition matrix, risk matrices, project artifacts{% endblock %}
 
 {% block css %}
+<!-- Preload Bootstrap Icons -->
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css" as="style">
+
+<!-- Load CSS -->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
 <style>
     /* Light theme - blue header and first column */
@@ -36,6 +40,25 @@
             color: #4ade80 !important;
         }
     }
+
+    /* Custom container for PDF documents */
+    .pdf-container {
+        max-width: 700px;
+        margin: 0 auto;
+    }
+
+    .pdf-container iframe {
+        width: 100%;
+        aspect-ratio: 8.5 / 11;
+        border: 1px solid rgba(0, 0, 0, 0.1);
+        border-radius: 4px;
+    }
+
+    @media (prefers-color-scheme: dark) {
+        .pdf-container iframe {
+            border-color: rgba(255, 255, 255, 0.1);
+        }
+    }
 </style>
 {% endblock %}
 
@@ -49,16 +72,13 @@
 <section id="pitch" class="section-card">
     <h2 class="section-title">Original Pitch</h2>
     
-    <div class="ratio ratio-16x9 mb-3">
-        <!-- TODO: Change pdf name -->
-        <iframe 
-        
-            src="{{ url_for('static', filename='pdfs/gradpace.pdf') }}" 
+    <div class="pdf-container mb-3">
+        <iframe
+            src="{{ url_for('static', filename='pdfs/gradpace.pdf') }}"
             type="application/pdf"
             title="GradPace Pitch Document">
         </iframe>
     </div>
-    <!-- TODO: Change pdf name -->
     <a href="{{ url_for('static', filename='pdfs/gradpace.pdf') }}" 
         download class="btn btn-primary"
     >

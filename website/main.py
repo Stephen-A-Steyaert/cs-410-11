@@ -1,9 +1,14 @@
 from flask import Flask, url_for as flask_url_for, send_from_directory, request
+from flask_caching import Cache
+from flask_compress import Compress
 from site_blueprints import blueprint
 from os import environ
 from pathlib import Path
 
 app = Flask(__name__)
+
+# Enable gzip compression
+Compress(app)
 
 # Read secret key from Docker secret or environment variable
 def get_secret(secret_name, env_var=None, default=None):
@@ -16,6 +21,13 @@ def get_secret(secret_name, env_var=None, default=None):
     return default
 
 app.config['SECRET_KEY'] = get_secret('flask_secret_key', 'SECRET_KEY', 'dev-secret-key-change-in-production')
+
+# Configure caching - short timeout in dev, longer in production
+is_production = environ.get('FLASK_ENV') == 'production'
+cache = Cache(app, config={
+    'CACHE_TYPE': 'SimpleCache',  # In-memory cache
+    'CACHE_DEFAULT_TIMEOUT': 3600 if is_production else 60  # 1 hour in prod, 1 minute in dev
+})
 
 # Automatic cache busting for static files
 @app.context_processor
@@ -38,6 +50,17 @@ def inject_request():
     """Make request object available in all templates."""
     return dict(request=request)
 
+# Add HTTP cache headers for static files
+@app.after_request
+def add_cache_headers(response):
+    """Add cache control headers for static files."""
+    if request.path.startswith('/static/'):
+        # Cache static files for 1 year (immutable due to cache busting)
+        response.cache_control.max_age = 31_536_000
+        response.cache_control.public = True
+        response.cache_control.immutable = True
+    return response
+
 # Route for robots.txt
 @app.route('/robots.txt')
 def robots():
@@ -45,6 +68,10 @@ def robots():
 
 # Register blueprints
 app.register_blueprint(blueprint, url_prefix="")
+
+# Initialize cache in blueprint
+from site_blueprints import init_cache
+init_cache(cache)
 
 if __name__ == "__main__":
     # This only runs when executing `python main.py` directly (development)
