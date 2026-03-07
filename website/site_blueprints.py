@@ -42,6 +42,10 @@ def deliverables():
 def references():
     return render_template('references.html')
 
+@blueprint.route('/glossary')
+def glossary():
+    return render_template('glossary.html')
+
 @blueprint.route('/easter-egg')
 def easter_egg():
     return render_template('ee.html')

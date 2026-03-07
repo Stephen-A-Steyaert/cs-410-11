@@ -1,0 +1,104 @@
+{% extends 'base.html' %}
+
+{% set active_page = 'glossary' %}
+
+{% block title %}Glossary{% endblock %}
+{% block description %}Glossary of key terms used in the GradPace project and career readiness research.{% endblock %}
+{% block keywords %}GradPace glossary, career readiness terms, workforce preparation definitions{% endblock %}
+
+{% block css %}
+<style>
+    .glossary-term {
+        margin-bottom: 0.5rem;
+    }
+
+    .glossary-definition {
+        margin: 0;
+        line-height: 1.6;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="hero-section">
+    <h1 class="display-6">Glossary</h1>
+    <p class="lead">Key terms and definitions for the GradPace project</p>
+</div>
+
+<section class="section-card">
+    <dl>
+        <dt class="section-title glossary-term">API (Application Programming Interface)</dt>
+        <dd class="glossary-definition">A set of rules that allows different software applications to communicate and exchange data with each other.</dd>
+    </dl>
+</section>
+
+<section class="section-card">
+    <dl>
+        <dt class="section-title glossary-term">Authentication</dt>
+        <dd class="glossary-definition">The process of verifying a user's identity before allowing access to a system.</dd>
+    </dl>
+</section>
+
+<section class="section-card">
+    <dl>
+        <dt class="section-title glossary-term">Backend</dt>
+        <dd class="glossary-definition">The server-side part of a website or application that handles logic, databases, and data processing.</dd>
+    </dl>
+</section>
+
+<section class="section-card">
+    <dl>
+        <dt class="section-title glossary-term">Cloud Computing</dt>
+        <dd class="glossary-definition">The use of remote servers on the internet to store data and run applications instead of a local computer.</dd>
+    </dl>
+</section>
+
+<section class="section-card">
+    <dl>
+        <dt class="section-title glossary-term">Data Leak</dt>
+        <dd class="glossary-definition">The accidental or unauthorized exposure of sensitive or private information.</dd>
+    </dl>
+</section>
+
+<section class="section-card">
+    <dl>
+        <dt class="section-title glossary-term">Database</dt>
+        <dd class="glossary-definition">An organized collection of data that can be stored, accessed, and managed electronically.</dd>
+    </dl>
+</section>
+
+<section class="section-card">
+    <dl>
+        <dt class="section-title glossary-term">Encryption</dt>
+        <dd class="glossary-definition">A security method that converts data into a coded form so that only authorized parties can read it.</dd>
+    </dl>
+</section>
+
+<section class="section-card">
+    <dl>
+        <dt class="section-title glossary-term">Frontend</dt>
+        <dd class="glossary-definition">The user-facing part of a website or application that users interact with in their browser.</dd>
+    </dl>
+</section>
+
+<section class="section-card">
+    <dl>
+        <dt class="section-title glossary-term">Token (AI)</dt>
+        <dd class="glossary-definition">A small unit of text processed by an AI model, such as a word, part of a word, or punctuation.</dd>
+    </dl>
+</section>
+
+<section class="section-card">
+    <dl>
+        <dt class="section-title glossary-term">User Interface (UI)</dt>
+        <dd class="glossary-definition">The visual elements of a software application that allow users to interact with it.</dd>
+    </dl>
+</section>
+
+<section class="section-card">
+    <dl>
+        <dt class="section-title glossary-term">Web Server</dt>
+        <dd class="glossary-definition">A computer system or software that stores websites and delivers web pages to users when they request them through a browser.</dd>
+    </dl>
+</section>
+{% endblock %}
