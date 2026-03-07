@@ -1,5 +1,4 @@
 {% extends 'base.html' %}
-{% from 'components/bio-card.html' import bio_card %}
 
 {% set active_page = 'bios' %}
 
@@ -9,32 +8,38 @@
 
 {% block css %}
 <style>
-    /* Add spacing between columns on mobile */
+    /* Grid layout for bios - 2 columns on wider screens */
+    .bio-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 2rem;
+    }
+
+    /* Stack on mobile */
     @media (max-width: 767.98px) {
-        .col-md-4 {
-            margin-bottom: 1.5rem;
+        .bio-grid {
+            grid-template-columns: 1fr;
         }
     }
 
-    /* Light mode - pink for odd, blue for even */
-    .bio-card {
-        background-color: rgba(0, 0, 0, 0.03) !important;
-        border-bottom: 4px solid #f06292 !important;
+    /* Invert name colors from border colors */
+    /* Light mode - pink border gets blue name, blue border gets pink name */
+    .section-card .section-title {
+        color: #0d6efd !important;
     }
 
-    .col-md-4:nth-child(even) .bio-card {
-        border-bottom-color: #0d6efd !important;
+    .section-card:nth-of-type(even) .section-title {
+        color: #f06292 !important;
     }
 
-    /* Dark mode - blue for odd, pink for even */
+    /* Dark mode - blue border gets pink name, pink border gets blue name */
     @media (prefers-color-scheme: dark) {
-        .bio-card {
-            background-color: rgba(255, 255, 255, 0.05) !important;
-            border-bottom-color: #0d6efd !important;
+        .section-card .section-title {
+            color: #f06292 !important;
         }
 
-        .col-md-4:nth-child(even) .bio-card {
-            border-bottom-color: #f06292 !important;
+        .section-card:nth-of-type(even) .section-title {
+            color: #0d6efd !important;
         }
     }
 </style>
@@ -44,26 +49,48 @@
 <div class="hero-section">
     <h1 class="display-6">Meet Our Team!</h1>
 </div>
-<div class="row mb-4">
-    <div class="col-md-4">
-        {{ bio_card("Dawson Fromm", "Database Specialist", url_for('static', filename='images/bios/dawson-fromm.jpg'), "Dawson is a Senior pursuing a B.S. in Computer Science at Old Dominion University and is enrolled in the Linked B.S./M.S. program.  He has experience with Java and Python and works as an undergraduate research assistant with interests in machine learning. His hobbies include following the English Premier League and playing video games.") }}
-    </div>
-    <div class="col-md-4">
-        {{ bio_card("Carlycia Mathis", "Document Specialist", url_for('static', filename='images/bios/carlycia-mathis.PNG'), "Carlycia is a senior pursing a B.S. in Computer Science at Old Dominion University. She has expienrece with integrating Linux and Windows operating systems. Her hobbies conist of spending time with family and reading books.") }}
-    </div>
-    <div class="col-md-4">
-        {{ bio_card("Aaron Killingbeck", "Backend Developer", url_for('static', filename='images/bios/aaron-killingbeck.png'), "Aaron is a Senior pursuing a BS in Computer Science at Old Dominion University. He also works as an undergraduate research assistant and night desk receptionist at ODU. His hobbies include reading, playing video games, and exercising.") }}
-    </div>
-</div>
-<div class="row mb-4">
-    <div class="col-md-4">
-        {{ bio_card("James Wile", "Backend Developer", url_for('static', filename='images/bios/JJWile.jpg'), "JJ is a Junior studying Computer Science at ODU, with interest in pursuing a minor in MET. JJ spends most of his time in the ODU Motorsports workshop or in the Society of Physics Students' lounge with friends. In his free time, he enjoys playing guitar, simulation racing, and going to the gym.") }}
-    </div>
-    <div class="col-md-4">
-        {{ bio_card("Stephen Steyaert", "Team Lead / Backend Developer", url_for('static', filename='images/bios/stephen-steyaert.jpg'), "Stephen is a Senior pursuing a BS in Computer Science with a minor in Cybersecurity at Old Dominion University. He has experience with Python, C++, and Java. He is currently working at the School of Cybersecurity as a Backend Software Developer working on <a href=\"https://cybercup.ai\" target=\"_blank\" rel=\"noopener noreferrer\">CyberCup.AI</a>. In his free time, he plays some video games, and does some software development of his own.") }}
-    </div>
-    <div class="col-md-4">
-        {{ bio_card("Nate Balcha", "Frontend Developer", url_for('static', filename='images/bios/nate-balcha.jpg'), "Nate is a Senior pursuing a BS in Computer Science at ODU. He has experince with Java and C. In his free time, he likes to read book and travel.") }}
-    </div>
+
+<div class="bio-grid">
+<section class="section-card">
+    <img src="{{ url_for('static', filename='images/bios/dawson-fromm.jpg') }}" alt="Dawson Fromm" class="bio-image">
+    <h3 class="section-title text-center">Dawson Fromm</h3>
+    <p class="bio-role text-center">Database Specialist</p>
+    <p>Dawson is a Senior pursuing a B.S. in Computer Science at Old Dominion University and is enrolled in the Linked B.S./M.S. program. He has experience with Java and Python and works as an undergraduate research assistant with interests in machine learning. His hobbies include following the English Premier League and playing video games.</p>
+</section>
+
+<section class="section-card">
+    <img src="{{ url_for('static', filename='images/bios/carlycia-mathis.PNG') }}" alt="Carlycia Mathis" class="bio-image">
+    <h3 class="section-title text-center">Carlycia Mathis</h3>
+    <p class="bio-role text-center">Document Specialist</p>
+    <p>Carlycia is a senior pursing a B.S. in Computer Science at Old Dominion University. She has expienrece with integrating Linux and Windows operating systems. Her hobbies conist of spending time with family and reading books.</p>
+</section>
+
+<section class="section-card">
+    <img src="{{ url_for('static', filename='images/bios/aaron-killingbeck.png') }}" alt="Aaron Killingbeck" class="bio-image">
+    <h3 class="section-title text-center">Aaron Killingbeck</h3>
+    <p class="bio-role text-center">Backend Developer</p>
+    <p>Aaron is a Senior pursuing a BS in Computer Science at Old Dominion University. He also works as an undergraduate research assistant and night desk receptionist at ODU. His hobbies include reading, playing video games, and exercising.</p>
+</section>
+
+<section class="section-card">
+    <img src="{{ url_for('static', filename='images/bios/JJWile.jpg') }}" alt="James Wile" class="bio-image">
+    <h3 class="section-title text-center">James Wile</h3>
+    <p class="bio-role text-center">Backend Developer</p>
+    <p>JJ is a Junior studying Computer Science at ODU, with interest in pursuing a minor in MET. JJ spends most of his time in the ODU Motorsports workshop or in the Society of Physics Students' lounge with friends. In his free time, he enjoys playing guitar, simulation racing, and going to the gym.</p>
+</section>
+
+<section class="section-card">
+    <img src="{{ url_for('static', filename='images/bios/stephen-steyaert.jpg') }}" alt="Stephen Steyaert" class="bio-image">
+    <h3 class="section-title text-center">Stephen Steyaert</h3>
+    <p class="bio-role text-center">Team Lead / Backend Developer</p>
+    <p>Stephen is a Senior pursuing a BS in Computer Science with a minor in Cybersecurity at Old Dominion University. He has experience with Python, C++, and Java. He is currently working at the School of Cybersecurity as a Backend Software Developer working on <a href="https://cybercup.ai" target="_blank" rel="noopener noreferrer">CyberCup.AI</a>. In his free time, he plays some video games, and does some software development of his own.</p>
+</section>
+
+<section class="section-card">
+    <img src="{{ url_for('static', filename='images/bios/nate-balcha.jpg') }}" alt="Nate Balcha" class="bio-image">
+    <h3 class="section-title text-center">Nate Balcha</h3>
+    <p class="bio-role text-center">Frontend Developer</p>
+    <p>Nate is a Senior pursuing a BS in Computer Science at ODU. He has experince with Java and C. In his free time, he likes to read book and travel.</p>
+</section>
 </div>
 {% endblock %}
