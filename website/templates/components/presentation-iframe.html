@@ -1,11 +1,31 @@
 {% macro presentation_iframe(presentation_url) %}
-<div class="responsive-iframe-container">
-  <iframe src="{{ presentation_url }}"
-          frameborder="0"
-          allowfullscreen="true"
-          mozallowfullscreen="true"
-          webkitallowfullscreen="true"
-          sandbox="allow-scripts allow-same-origin allow-presentation"
-          loading="lazy"></iframe>
+<div class="responsive-iframe-container" data-iframe-url="{{ presentation_url }}">
+  <div class="iframe-placeholder">
+    <button class="load-presentation-btn" onclick="loadPresentation(this)">
+      <i class="bi bi-play-circle"></i> Load Presentation
+    </button>
+    <p class="load-presentation-hint">Click to load the embedded Google Slides presentation</p>
+  </div>
 </div>
+
+<script>
+function loadPresentation(button) {
+  const container = button.closest('.responsive-iframe-container');
+  const url = container.dataset.iframeUrl;
+  const placeholder = container.querySelector('.iframe-placeholder');
+
+  // Create iframe
+  const iframe = document.createElement('iframe');
+  iframe.src = url;
+  iframe.frameBorder = '0';
+  iframe.allowFullscreen = true;
+  iframe.setAttribute('mozallowfullscreen', 'true');
+  iframe.setAttribute('webkitallowfullscreen', 'true');
+  iframe.setAttribute('sandbox', 'allow-scripts allow-same-origin allow-presentation');
+
+  // Replace placeholder with iframe
+  placeholder.remove();
+  container.appendChild(iframe);
+}
+</script>
 {% endmacro %}
