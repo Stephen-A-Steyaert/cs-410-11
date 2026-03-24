@@ -74,7 +74,7 @@ def feasibility_version_three():
     return render_template('feasibility-slides-version-3.html')
 
 @blueprint.route('/feasibility-v4')
-def feasibility_version_three():
+def feasibility_version_four():
     if cache:
         @cache.cached(timeout=86_400, key_prefix='feasibility_v4')
         def _cached():
