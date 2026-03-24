@@ -73,14 +73,23 @@ def feasibility_version_three():
         return _cached()
     return render_template('feasibility-slides-version-3.html')
 
-@blueprint.route('/wip-feasibility')
-def wip_feasibility():
+@blueprint.route('/feasibility-v4')
+def feasibility_version_three():
     if cache:
-        @cache.cached(timeout=3600, key_prefix='wip_feasibility')  # Shorter for WIP
+        @cache.cached(timeout=86_400, key_prefix='feasibility_v4')
         def _cached():
-            return render_template('wip-feasibility-slides.html')
+            return render_template('feasibility-slides-version-4.html')
         return _cached()
-    return render_template('wip-feasibility-slides.html')
+    return render_template('feasibility-slides-version-3.html')
+
+@blueprint.route('/final-feasibility')
+def final_feasibility():
+    if cache:
+        @cache.cached(timeout=3600, key_prefix='final_feasibility')  # Shorter for WIP
+        def _cached():
+            return render_template('final-feasibility-slides.html')
+        return _cached()
+    return render_template('final-feasibility-slides.html')
 
 @blueprint.route('/deliverables')
 def deliverables():

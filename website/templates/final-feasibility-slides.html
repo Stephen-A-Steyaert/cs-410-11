@@ -1,11 +1,9 @@
 {% extends 'base.html' %}
 {% from 'components/presentation-iframe.html' import presentation_iframe %}
-
-{% set active_page = 'feasV2' %}
-
-{% block title %}Feasibility Presentation Version 3{% endblock %}
-{% block description %}GradPace Feasibility Study Version 3 - Team Copper's project feasibility analysis for Old Dominion University Computer Science.{% endblock %}
-{% block keywords %}GradPace feasibility, project presentation, ODU CS project, Team Copper presentation{% endblock %}
+{% set active_page = 'finalFeas' %}
+{% block title %}Work-In-Progress Feasibility Presentation{% endblock %}
+{% block description %}GradPace Final Feasibility Study - Team Copper's ongoing feasibility analysis for Old Dominion University Computer Science project.{% endblock %}
+{% block keywords %}GradPace Fnal, feasibility study, work in progress, ODU project, Team Copper presentation{% endblock %}
 
 {% block css %}
 <!-- Preconnect to Google Docs for embedded presentation -->
@@ -22,12 +20,11 @@
 
 {% block content %}
 <p class="h3 text-center">
-    Feasibility
-    <a href="https://docs.google.com/presentation/d/1ZoiKlPksCmLM-V2UtQE3mNPo_Ti7df8zMDI7ndVxV-Q/export/pdf" target="_blank" rel="noopener noreferrer">
+    Final Feasibility 
+    <a href="https://docs.google.com/presentation/d/1h20cPIrT3Y7YiMw_P3RL6LS1W8evZIpKJaHBhxqt9MA/export/pdf" target="_blank" rel="noopener noreferrer">
         Presentation
         <i class="bi bi-file-earmark-pdf-fill" style="font-size: .95rem;"></i>
     </a>
-    Version 3
 </p>
-{{ presentation_iframe("https://docs.google.com/presentation/d/e/2PACX-1vSV10kOW5OrqOIWbGmGk9kh7AEXdzPwe-zX-dSlrLQdu_e-Q5dnYcr_hXuudiz76pWyMiqSnxMmwlv1/pubembed") }}
+{{ presentation_iframe("https://docs.google.com/presentation/d/e/2PACX-1vRMSXQYjl31FO0IjspPz4Jf84eGzkoyVn8fO_7WzmLTxlT175IdsU4QMPkK-_zxE-5A1no46QiI-hx5/pubembed") }}
 {% endblock %}
