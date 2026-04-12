@@ -137,24 +137,6 @@
     )}}
 </section>
 
-<!-- Lab 1 Outline -->
-<section id="lab-1-outline" class="section-card">
-    <h2 class="section-title">Original Pitch</h2>
-    
-    <div class="pdf-container mb-3">
-        <iframe
-            src="{{ url_for('static', filename='pdfs/lab1_outline.pdf') }}"
-            type="application/pdf"
-            title="GradPace Pitch Document">
-        </iframe>
-    </div>
-    <a href="{{ url_for('static', filename='pdfs/lab1_outline.pdf') }}" 
-        download class="btn btn-primary"
-    >
-        Download PDF <i class="bi bi-download"></i>
-    </a>
-</section>
-
 <!-- Competition matrix -->
 <section id="competition-matrix" class="section-card">
     <h2 class="section-title">Competition Matrix</h2>
@@ -223,6 +205,25 @@
             </tbody>
         </table>
     </div>
+</section>
+
+<!-- LABS START -->
+<!-- Lab 1 Outline -->
+<section id="lab-1-outline" class="section-card">
+    <h2 class="section-title">Original Pitch</h2>
+    
+    <div class="pdf-container mb-3">
+        <iframe
+            src="{{ url_for('static', filename='pdfs/lab1_outline.pdf') }}"
+            type="application/pdf"
+            title="GradPace Pitch Document">
+        </iframe>
+    </div>
+    <a href="{{ url_for('static', filename='pdfs/lab1_outline.pdf') }}" 
+        download class="btn btn-primary"
+    >
+        Download PDF <i class="bi bi-download"></i>
+    </a>
 </section>
 
 {% endblock %}
