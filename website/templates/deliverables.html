@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% from 'components/deliverable.html' import deliverable %}
+{% from 'components/pdf-viewer.html' import pdf_viewer %}
 
 {% block title %}Deliverables{% endblock %}
 {% block description %}Deliverables - GradPace by Team Copper. Access project deliverables including process flows, diagrams, competition matrices, and risk assessments for our career intelligence platform.{% endblock %}
@@ -40,25 +41,6 @@
             color: #4ade80 !important;
         }
     }
-
-    /* Custom container for PDF documents */
-    .pdf-container {
-        max-width: 700px;
-        margin: 0 auto;
-    }
-
-    .pdf-container iframe {
-        width: 100%;
-        aspect-ratio: 8.5 / 11;
-        border: 1px solid rgba(0, 0, 0, 0.1);
-        border-radius: 4px;
-    }
-
-    @media (prefers-color-scheme: dark) {
-        .pdf-container iframe {
-            border-color: rgba(255, 255, 255, 0.1);
-        }
-    }
 </style>
 {% endblock %}
 
@@ -68,22 +50,10 @@
     <h1 class="display-6">Deliverables</h1>
 </div>
 
-<!-- Current Process Flow -->
+
 <section id="pitch" class="section-card">
     <h2 class="section-title">Original Pitch</h2>
-    
-    <div class="pdf-container mb-3">
-        <iframe
-            src="{{ url_for('static', filename='pdfs/gradpace.pdf') }}"
-            type="application/pdf"
-            title="GradPace Pitch Document">
-        </iframe>
-    </div>
-    <a href="{{ url_for('static', filename='pdfs/gradpace.pdf') }}" 
-        download class="btn btn-primary"
-    >
-        Download PDF <i class="bi bi-download"></i>
-    </a>
+    {{ pdf_viewer("GradPace Pitch Document", "pdfs/gradpace.pdf") }}
 </section>
 
 <!-- Current Process Flow -->
@@ -205,25 +175,6 @@
             </tbody>
         </table>
     </div>
-</section>
-
-<!-- LABS START -->
-<!-- Lab 1 Outline -->
-<section id="lab-1-outline" class="section-card">
-    <h2 class="section-title">Original Pitch</h2>
-    
-    <div class="pdf-container mb-3">
-        <iframe
-            src="{{ url_for('static', filename='pdfs/lab1_outline.pdf') }}"
-            type="application/pdf"
-            title="GradPace Pitch Document">
-        </iframe>
-    </div>
-    <a href="{{ url_for('static', filename='pdfs/lab1_outline.pdf') }}" 
-        download class="btn btn-primary"
-    >
-        Download PDF <i class="bi bi-download"></i>
-    </a>
 </section>
 
 {% endblock %}

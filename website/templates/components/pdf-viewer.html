@@ -1,0 +1,35 @@
+{% macro pdf_viewer(title, pdf_path) %}
+<style>
+    /* Custom container for PDF documents */
+    .pdf-container {
+        max-width: 700px;
+        margin: 0 auto;
+    }
+
+    .pdf-container iframe {
+        width: 100%;
+        aspect-ratio: 8.5 / 11;
+        border: 1px solid rgba(0, 0, 0, 0.1);
+        border-radius: 4px;
+    }
+
+    @media (prefers-color-scheme: dark) {
+        .pdf-container iframe {
+            border-color: rgba(255, 255, 255, 0.1);
+        }
+    }
+
+</style>
+<div class="pdf-container mb-3">
+    <iframe
+        src="{{ url_for('static', filename=pdf_path) }}"
+        type="application/pdf"
+        title="{{ title }}">
+    </iframe>
+</div>
+<a href="{{ url_for('static', filename=pdf_path) }}"
+    download class="btn btn-primary"
+>
+    Download PDF <i class="bi bi-download"></i>
+</a>
+{% endmacro %}

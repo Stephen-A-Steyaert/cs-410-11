@@ -85,7 +85,7 @@ def feasibility_version_four():
 @blueprint.route('/final-feasibility')
 def final_feasibility():
     if cache:
-        @cache.cached(timeout=3600, key_prefix='final_feasibility')  # Shorter for WIP
+        @cache.cached(timeout=86_400, key_prefix='final_feasibility')
         def _cached():
             return render_template('final-feasibility-slides.html')
         return _cached()
@@ -103,7 +103,7 @@ def design_wip():
 @blueprint.route('/design-v1')
 def design_version_one():
     if cache:
-        @cache.cached(timeout=3600, key_prefix='design_version_one')  # Shorter for WIP
+        @cache.cached(timeout=86_400, key_prefix='design_version_one')
         def _cached():
             return render_template('design-slides-version-1.html')
         return _cached()
@@ -112,7 +112,7 @@ def design_version_one():
 @blueprint.route('/design-v2')
 def design_version_two():
     if cache:
-        @cache.cached(timeout=3600, key_prefix='design_version_two')  # Shorter for WIP
+        @cache.cached(timeout=86_400, key_prefix='design_version_two')
         def _cached():
             return render_template('design-slides-version-2.html')
         return _cached()
@@ -121,7 +121,7 @@ def design_version_two():
 @blueprint.route('/design-v3')
 def design_version_three():
     if cache:
-        @cache.cached(timeout=3600, key_prefix='design_version_three')  # Shorter for WIP
+        @cache.cached(timeout=86_400, key_prefix='design_version_three')
         def _cached():
             return render_template('design-slides-version-3.html')
         return _cached()
@@ -130,11 +130,29 @@ def design_version_three():
 @blueprint.route('/design-v4')
 def design_version_four():
     if cache:
-        @cache.cached(timeout=3600, key_prefix='design_version_four')  # Shorter for WIP
+        @cache.cached(timeout=86_400, key_prefix='design_version_four')
         def _cached():
             return render_template('design-slides-version-4.html')
         return _cached()
     return render_template('design-slides-version-4.html')
+
+@blueprint.route('/lab-1-outline')
+def lab_one_outline():
+    if cache:
+        @cache.cached(timeout=86_400, key_prefix='lab_one_outline')
+        def _cached():
+            return render_template('lab1-outline.html')
+        return _cached()
+    return render_template('lab1-outline.html')
+
+@blueprint.route('/lab-1')
+def lab_one():
+    if cache:
+        @cache.cached(timeout=86_400, key_prefix='lab_one')
+        def _cached():
+            return render_template('lab1.html')
+        return _cached()
+    return render_template('lab1.html')
 
 @blueprint.route('/deliverables')
 def deliverables():
