@@ -8,8 +8,6 @@ on:
     workflows: ["Build and Push to GHCR"]
     types:
       - completed
-    branches:
-      - main
 
 jobs:
   deploy:
