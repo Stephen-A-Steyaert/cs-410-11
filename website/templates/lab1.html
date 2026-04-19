@@ -2,11 +2,11 @@
 {% extends 'base.html' %}
 {% from 'components/pdf-viewer.html' import pdf_viewer %}
 
-{% set active_page = 'lab1Outline' %}
+{% set active_page = 'lab1' %}
 
-{% block title %}Lab 1 - Individual Submissions{% endblock %}
-{% block description %}GradPace Lab 1 Outline - Team Copper's Lab 1 outline document for Old Dominion University Computer Science.{% endblock %}
-{% block keywords %}GradPace Lab 1, lab outline, ODU CS project, Team Copper{% endblock %}
+{% block title %}Lab 1 {% endblock %}
+{% block description %}GradPace Lab 1 Outline - Team Copper's Lab 1 documents for Old Dominion University Computer Science.{% endblock %}
+{% block keywords %}GradPace Lab 1, lab document, ODU CS project, Team Copper{% endblock %}
 
 {% block css %}
 
@@ -19,8 +19,14 @@
 
 {% block content %}
 <p class="h3 text-center">
-    Lab 1 - Individual Submissions
+    Lab 1
 </p>
+
+<section id="lab-1-outline" class="section-card">
+    <h2 class="section-title">Lab 1 - Outline</h2>
+    {{ pdf_viewer("GradPace Lab 1 Outline", "pdfs/lab1_outline.pdf") }}
+</section>
+
 <!-- Lab 1 -->
 <section id="lab-1-dawson" class="section-card">
     <h2 class="section-title">Lab 1 - Dawson Fromm</h2>

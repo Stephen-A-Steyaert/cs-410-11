@@ -136,15 +136,6 @@ def design_version_four():
         return _cached()
     return render_template('design-slides-version-4.html')
 
-@blueprint.route('/lab-1-outline')
-def lab_one_outline():
-    if cache:
-        @cache.cached(timeout=86_400, key_prefix='lab_one_outline')
-        def _cached():
-            return render_template('lab1-outline.html')
-        return _cached()
-    return render_template('lab1-outline.html')
-
 @blueprint.route('/lab-1')
 def lab_one():
     if cache:
