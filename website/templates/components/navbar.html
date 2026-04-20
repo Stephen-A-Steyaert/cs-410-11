@@ -46,20 +46,23 @@
         <li class="nav-item">
           <a class="nav-link {{ 'active' if active_page == 'deliverables' }}" aria-current="page" href="{{url_for('blueprint.deliverables')}}">Deliverables</a>
         </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="{{url_for('blueprint.labs')}}" role="button" aria-expanded="false" tabindex="0">
-            Labs
-        </a>
-        <ul class="dropdown-menu">
-          <li><h3 class="dropdown-header">Lab 1</h3></li>
-          <li><a class="dropdown-item" href="{{url_for('blueprint.lab_one')}}#outline">Lab 1 - Outline</a></li>
-          <li><a class="dropdown-item" href="{{url_for('blueprint.lab_one')}}#lab-1-dawson">Lab 1 - Dawson Fromm</a></li>
-          <li><a class="dropdown-item" href="{{url_for('blueprint.lab_one')}}#lab-1-carly">Lab 1 - Carlycia Mathis</a></li>
-          <li><a class="dropdown-item" href="{{url_for('blueprint.lab_one')}}#lab-1-aaron">Lab 1 - Aaron Killingbeck</a></li>
-          <li><a class="dropdown-item" href="{{url_for('blueprint.lab_one')}}#lab-1-jj">Lab 1 - James Wile</a></li>
-          <li><a class="dropdown-item" href="{{url_for('blueprint.lab_one')}}#lab-1-stephen">Lab 1 - Stephen Steyaert</a></li>
-          <li><a class="dropdown-item" href="{{url_for('blueprint.lab_one')}}#lab-1-nate">Lab 1 - Nate Balcha</a></li>
-        </ul>
+        <li class="nav-item">
+          <div class="btn-group">
+            <a class="nav-link {{ 'active' if active_page == 'labs' }}" href="{{url_for('blueprint.labs')}}">Labs</a>
+            <button type="button" class="nav-link dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
+              <span class="visually-hidden">Toggle Dropdown</span>
+            </button>
+            <ul class="dropdown-menu">
+              <li><h3 class="dropdown-header">Lab 1</h3></li>
+              <li><a class="dropdown-item" href="{{url_for('blueprint.lab_one')}}#outline">Lab 1 - Outline</a></li>
+              <li><a class="dropdown-item" href="{{url_for('blueprint.lab_one')}}#lab-1-dawson">Lab 1 - Dawson Fromm</a></li>
+              <li><a class="dropdown-item" href="{{url_for('blueprint.lab_one')}}#lab-1-carly">Lab 1 - Carlycia Mathis</a></li>
+              <li><a class="dropdown-item" href="{{url_for('blueprint.lab_one')}}#lab-1-aaron">Lab 1 - Aaron Killingbeck</a></li>
+              <li><a class="dropdown-item" href="{{url_for('blueprint.lab_one')}}#lab-1-jj">Lab 1 - James Wile</a></li>
+              <li><a class="dropdown-item" href="{{url_for('blueprint.lab_one')}}#lab-1-stephen">Lab 1 - Stephen Steyaert</a></li>
+              <li><a class="dropdown-item" href="{{url_for('blueprint.lab_one')}}#lab-1-nate">Lab 1 - Nate Balcha</a></li>
+            </ul>
+          </div>
         </li>
         <li class="nav-item">
           <a class="nav-link {{ 'active' if active_page == 'references' }}" aria-current="page" href="{{url_for('blueprint.references')}}">References</a>
