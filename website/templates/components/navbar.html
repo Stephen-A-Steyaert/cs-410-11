@@ -47,7 +47,7 @@
           <a class="nav-link {{ 'active' if active_page == 'deliverables' }}" aria-current="page" href="{{url_for('blueprint.deliverables')}}">Deliverables</a>
         </li>
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="javascript:void(0)" role="button" aria-expanded="false" tabindex="0">
+          <a class="nav-link dropdown-toggle" href="{{url_for('blueprint.labs')}}" role="button" aria-expanded="false" tabindex="0">
             Labs
         </a>
         <ul class="dropdown-menu">
