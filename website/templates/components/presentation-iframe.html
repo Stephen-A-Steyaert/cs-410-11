@@ -1,31 +1,79 @@
-{% macro presentation_iframe(presentation_url) %}
-<div class="responsive-iframe-container" data-iframe-url="{{ presentation_url }}">
+{% macro presentation_iframe(presentation_url, slide_id=None, slide_ids=None, controls=True) %}
+{% set slides = slide_ids if slide_ids else ([slide_id] if slide_id else []) %}
+{% set instance_id = range(100000) | random %}
+{% set multi = slides | length > 1 %}
+
+<div class="responsive-iframe-container"
+     id="slide-container-{{ instance_id }}"
+     data-base-url="{{ presentation_url }}"
+     data-slides='{{ slides | tojson }}'
+     data-controls="{{ 'true' if controls else 'false' }}"
+     style="position: relative;">
   <div class="iframe-placeholder">
-    <button class="load-presentation-btn" onclick="loadPresentation(this)">
+    <button class="load-presentation-btn" onclick="gpLoadSlides('{{ instance_id }}')">
       <i class="bi bi-play-circle"></i> Load Presentation
     </button>
     <p class="load-presentation-hint">Click to load the embedded Google Slides presentation</p>
   </div>
 </div>
 
+{% if multi %}
+<div id="slide-nav-{{ instance_id }}" style="display:none;" class="d-flex justify-content-center align-items-center gap-3 mb-4">
+  <button class="btn btn-outline-primary btn-sm" onclick="gpChangeSlide('{{ instance_id }}', -1)">
+    <i class="bi bi-chevron-left"></i> Prev
+  </button>
+  <span id="slide-counter-{{ instance_id }}">1 / {{ slides | length }}</span>
+  <button class="btn btn-outline-primary btn-sm" onclick="gpChangeSlide('{{ instance_id }}', 1)">
+    Next <i class="bi bi-chevron-right"></i>
+  </button>
+</div>
+{% endif %}
+
 <script>
-function loadPresentation(button) {
-  const container = button.closest('.responsive-iframe-container');
-  const url = container.dataset.iframeUrl;
-  const placeholder = container.querySelector('.iframe-placeholder');
+if (!window._gpSlides) {
+  window._gpSlides = {};
 
-  // Create iframe
-  const iframe = document.createElement('iframe');
-  iframe.src = url;
-  iframe.frameBorder = '0';
-  iframe.allowFullscreen = true;
-  iframe.setAttribute('mozallowfullscreen', 'true');
-  iframe.setAttribute('webkitallowfullscreen', 'true');
-  iframe.setAttribute('sandbox', 'allow-scripts allow-same-origin allow-presentation');
+  window.gpLoadSlides = function(id) {
+    var el = document.getElementById('slide-container-' + id);
+    var slides = JSON.parse(el.getAttribute('data-slides'));
+    var baseUrl = el.getAttribute('data-base-url');
+    window._gpSlides[id] = 0;
+    gpRenderSlide(id, baseUrl, slides, 0);
+    var nav = document.getElementById('slide-nav-' + id);
+    if (nav) nav.style.display = 'flex';
+  };
 
-  // Replace placeholder with iframe
-  placeholder.remove();
-  container.appendChild(iframe);
+  window.gpChangeSlide = function(id, dir) {
+    var el = document.getElementById('slide-container-' + id);
+    var slides = JSON.parse(el.getAttribute('data-slides'));
+    var baseUrl = el.getAttribute('data-base-url');
+    var cur = window._gpSlides[id] || 0;
+    var next = (cur + dir + slides.length) % slides.length;
+    window._gpSlides[id] = next;
+    gpRenderSlide(id, baseUrl, slides, next);
+    var counter = document.getElementById('slide-counter-' + id);
+    if (counter) counter.textContent = (next + 1) + ' / ' + slides.length;
+  };
+
+  window.gpRenderSlide = function(id, baseUrl, slides, index) {
+    var el = document.getElementById('slide-container-' + id);
+    var placeholder = el.querySelector('.iframe-placeholder');
+    if (placeholder) placeholder.remove();
+    var iframe = el.querySelector('iframe');
+    if (!iframe) {
+      iframe = document.createElement('iframe');
+      iframe.frameBorder = '0';
+      iframe.allowFullscreen = true;
+      iframe.setAttribute('mozallowfullscreen', 'true');
+      iframe.setAttribute('webkitallowfullscreen', 'true');
+      iframe.setAttribute('sandbox', 'allow-scripts allow-same-origin allow-presentation');
+      if (el.getAttribute('data-controls') === 'false') {
+        iframe.style.pointerEvents = 'none';
+      }
+      el.appendChild(iframe);
+    }
+    iframe.src = baseUrl + (slides[index] ? '?slide=id.' + slides[index] : '');
+  };
 }
 </script>
 {% endmacro %}

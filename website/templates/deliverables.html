@@ -95,6 +95,7 @@
     <h1 class="display-6">Deliverables</h1>
 </div>
 
+{% set slides_url = "https://docs.google.com/presentation/d/e/2PACX-1vRmxiUiun-glCD5RChizDFVtDVlp-m9z0EXXgHHBEHZSY9rnuNfJbryGFvNpg4EzZxYOchQ1--1c5bq/pubembed" %}
 
 <section id="pitch" class="section-card">
     <h2 class="section-title">Original Pitch</h2>
@@ -107,10 +108,7 @@
     <p>
         This diagram shows the current process flow and highlights where the process breaks.
     </p>
-    {{ deliverable(
-        "Current Process Flow",
-        "images/flows/current-process-flow.png"
-    )}}
+    {{ presentation_iframe(slides_url, slide_id="g3c9b1d106aa_0_6", controls=False) }}
 </section>
 
 <!-- Solution Process Flow -->
@@ -119,10 +117,7 @@
     <p>
         This diagram shows the proposed solution process flow and highlights where the system resolves existing process breakdowns.
     </p>
-    {{ deliverable(
-        "Solution Process Flow",
-        "images/flows/solution-process-flow.png"
-    )}}
+    {{ presentation_iframe(slides_url, slide_id="g3c9996ad0eb_0_470", controls=False) }}
 </section>
 
 <!-- MFCD -->
@@ -131,25 +126,13 @@
     <p>
         This diagram illustrates the planned functional components for the GradPace system, showing how modules will connect academic progress tracking with professional opportunity matching.
     </p>
-    {{ deliverable(
-        "Major Functional Components Diagram",
-        "images/deliverables/MFCD.png"
-    )}}
+    {{ presentation_iframe(slides_url, slide_id="g3c9996ad0eb_0_464", controls=False) }}
 </section>
 
-<!-- Risk Matices -->
+<!-- Risk Matrices -->
 <section id="risks" class="section-card">
     <h2 class="section-title">Risk Matrices</h2>
-    <div class="mb-4">
-        {{ deliverable(
-            "Customer Risk Matrix",
-            "images/deliverables/customer_risk_matrix.png"
-        )}}
-    </div>
-    {{ deliverable(
-        "Technical Risk Matrix",
-        "images/deliverables/technical_risk_matrix.png"
-    )}}
+    {{ presentation_iframe(slides_url, slide_ids=["g3cbbd2779df_0_0", "g3cbbd2779df_3_2"], controls=False) }}
 </section>
 
 <!-- Competition matrix -->
@@ -279,12 +262,12 @@
                     <td class="text-center"></td>
                     <td class="text-center text-success"><i class="bi bi-check-circle-fill"></i></td>
                 </tr>
-                <tr>
+                <tr class="highlight">
                     <td>View Roadmap</td>
                     <td class="text-center text-success"><i class="bi bi-check-circle-fill"></i></td>
+                    <td class="text-center"></td>
+                    <td class="text-center"></td>
                     <td class="text-center text-success"><i class="bi bi-check-circle-fill"></i></td>
-                    <td class="text-center"></td>
-                    <td class="text-center"></td>
                 </tr>
                 <tr class="highlight">
                     <td>Early-Warning Gap Detection</td>
@@ -293,11 +276,11 @@
                     <td class="text-center"></td>
                     <td class="text-center text-success"><i class="bi bi-check-circle-fill"></i></td>
                 </tr>
-                <tr>
+                <tr class="highlight">
                     <td>Industry Readiness Dashboard</td>
                     <td class="text-center text-success"><i class="bi bi-check-circle-fill"></i></td>
                     <td class="text-center"></td>
-                    <td class="text-center text-success"><i class="bi bi-check-circle-fill"></i></td>
+                    <td class="text-center"></td>
                     <td class="text-center text-success"><i class="bi bi-check-circle-fill"></i></td>
                 </tr>
                 <tr class="highlight">
@@ -310,11 +293,11 @@
                 <tr>
                     <td>Notifications/Alerts</td>
                     <td class="text-center text-success"><i class="bi bi-check-circle-fill"></i></td>
-                    <td class="text-center text-success"><i class="bi bi-check-circle-fill"></i></td>
+                    <td class="text-center"></td>
                     <td class="text-center"></td>
                     <td class="text-center text-success"><i class="bi bi-check-circle-fill"></i></td>
                 </tr>
-                <tr>
+                <tr class="highlight">
                     <td>Location-Based Event Recommendations</td>
                     <td class="text-center text-success"><i class="bi bi-check-circle-fill"></i></td>
                     <td class="text-center"></td>
@@ -330,7 +313,7 @@
                     <td class="text-center text-success"><i class="bi bi-check-circle-fill"></i></td>
                     <td class="text-center text-success"><i class="bi bi-check-circle-fill"></i></td>
                 </tr>
-                <tr>
+                <tr class="highlight">
                     <td>Alumni Survey</td>
                     <td class="text-center"></td>
                     <td class="text-center text-success"><i class="bi bi-check-circle-fill"></i></td>
@@ -339,9 +322,9 @@
                 </tr>
                 <tr>
                     <td>Survey Results Dashboard</td>
-                    <td class="text-center"></td>
-                    <td class="text-center"></td>
-                    <td class="text-center"></td>
+                    <td class="text-center text-success"><i class="bi bi-check-circle-fill"></i></td>
+                    <td class="text-center text-success"><i class="bi bi-check-circle-fill"></i></td>
+                    <td class="text-center text-success"><i class="bi bi-check-circle-fill"></i></td>
                     <td class="text-center text-success"><i class="bi bi-check-circle-fill"></i></td>
                 </tr>
                 <!-- System Administration -->
@@ -372,12 +355,28 @@
     </div>
 </section>
 
-<!-- Risk Matices -->
-<section id="risks" class="section-card">
+<!-- WBS Diagram -->
+<section id="wbs-diagram" class="section-card">
+    <h2 class="section-title">WBS Diagram</h2>
+    {{ presentation_iframe(slides_url, slide_id="g3d35a79cb79_0_18", controls=False) }}
+</section>
+
+<!-- Database Schema -->
+<section id="db-schema" class="section-card">
+    <h2 class="section-title">Database Schema</h2>
+    {{ presentation_iframe(slides_url, slide_id="g3d7124c190e_0_1", controls=False) }}
+</section>
+
+<!-- Algorithms -->
+<section id="algorithms" class="section-card">
+    <h2 class="section-title">Algorithms</h2>
+    {{ presentation_iframe(slides_url, slide_ids=["g3d4904ebada_0_0", "g3d4904ebada_0_62", "g3d4904ebada_0_69"], controls=False) }}
+</section>
+
+<!-- UI Mockups -->
+<section id="ui-mockups" class="section-card">
     <h2 class="section-title">User Interface Mockups</h2>
-        {{ presentation_iframe(
-            "https://docs.google.com/presentation/d/e/2PACX-1vRDxxpa1wj4dvmQqKt_EZVfJTJJYBXKfodyd7ucoiLxRJFiFRldXBv2jJet1Hbhkl1ga33gpe3C6zix/pubembed"
-        )}}
+    {{ presentation_iframe(slides_url, slide_ids=["g3d35a79cb79_0_12", "g3d5701459e6_0_4", "g3d68d0b55ad_0_1"], controls=False) }}
 </section>
 
 {% endblock %}
