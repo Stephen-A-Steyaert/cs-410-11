@@ -41,6 +41,47 @@
             color: #4ade80 !important;
         }
     }
+
+    /* Feature table - pink header and first two columns */
+    .feature-table thead th {
+        background-color: #0d6efd !important;
+        color: #fff !important;
+    }
+
+    .feature-table tbody td.category-cell,
+    .feature-table tbody tr:hover > td.category-cell {
+        --bs-table-bg-state: transparent;
+        --bs-table-color-state: #fff;
+        background-color: #0d6efd !important;
+        color: #fff !important;
+    }
+
+    .feature-table tr.highlight {
+        background-color: #f06292;
+    }
+
+    @media (prefers-color-scheme: dark) {
+        .feature-table thead th {
+            background-color: #f06292 !important;
+            color: #fff !important;
+        }
+
+        .feature-table tbody td.category-cell,
+        .feature-table tbody tr:hover > td.category-cell {
+            --bs-table-bg-state: transparent;
+            --bs-table-color-state: #fff;
+            background-color: #f06292 !important;
+            color: #fff !important;
+        }
+
+        .feature-table .text-success {
+            color: #4ade80 !important;
+        }
+
+        .feature-table tr.highlight {
+            background-color: #0d6efd;
+        }
+    }
 </style>
 {% endblock %}
 
@@ -170,6 +211,156 @@
                     <td class="text-center text-success"><i class="bi bi-check-circle-fill"></i></td>
                     <td class="text-center"></td>
                     <td class="text-center text-success"><i class="bi bi-check-circle-fill"></i></td>
+                    <td class="text-center text-success"><i class="bi bi-check-circle-fill"></i></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</section>
+
+<section id="feature-table" class="section-card">
+    <h2 class="section-title">Feature Table</h2>
+    <p>
+        This matrix compares GradPace against existing career development tools and platforms, evaluating key features and competitive advantages.
+    </p>
+    <div class="table-responsive">
+        <table class="table table-bordered table-hover feature-table">
+            <thead>
+                <tr>
+                    <th>Category</th>
+                    <th>Features</th>
+                    <th>Students</th>
+                    <th>Alumni</th>
+                    <th>Industry Professionals</th>
+                    <th>System Administrator</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Account Management -->
+                <tr>
+                    <td rowspan="3" class="category-cell"><strong>Account Management</strong></td>
+                    <td>Login/Authentication</td>
+                    <td class="text-center text-success"><i class="bi bi-check-circle-fill"></i></td>
+                    <td class="text-center text-success"><i class="bi bi-check-circle-fill"></i></td>
+                    <td class="text-center text-success"><i class="bi bi-check-circle-fill"></i></td>
+                    <td class="text-center text-success"><i class="bi bi-check-circle-fill"></i></td>
+                </tr>
+                <tr>
+                    <td>Account Creation/Deletion</td>
+                    <td class="text-center text-success"><i class="bi bi-check-circle-fill"></i></td>
+                    <td class="text-center text-success"><i class="bi bi-check-circle-fill"></i></td>
+                    <td class="text-center text-success"><i class="bi bi-check-circle-fill"></i></td>
+                    <td class="text-center text-success"><i class="bi bi-check-circle-fill"></i></td>
+                </tr>
+                <tr>
+                    <td>Account Subscription Management</td>
+                    <td class="text-center text-success"><i class="bi bi-check-circle-fill"></i></td>
+                    <td class="text-center text-success"><i class="bi bi-check-circle-fill"></i></td>
+                    <td class="text-center"></td>
+                    <td class="text-center text-success"><i class="bi bi-check-circle-fill"></i></td>
+                </tr>
+                <!-- Student Career Development Core -->
+                <tr>
+                    <td rowspan="8" class="category-cell"><strong>Student Career Development Core</strong></td>
+                    <td>Input Academic and Professional Info</td>
+                    <td class="text-center text-success"><i class="bi bi-check-circle-fill"></i></td>
+                    <td class="text-center"></td>
+                    <td class="text-center"></td>
+                    <td class="text-center text-success"><i class="bi bi-check-circle-fill"></i></td>
+                </tr>
+                <tr class="highlight">
+                    <td>Personalized Roadmap Generation</td>
+                    <td class="text-center text-success"><i class="bi bi-check-circle-fill"></i></td>
+                    <td class="text-center"></td>
+                    <td class="text-center"></td>
+                    <td class="text-center text-success"><i class="bi bi-check-circle-fill"></i></td>
+                </tr>
+                <tr>
+                    <td>View Roadmap</td>
+                    <td class="text-center text-success"><i class="bi bi-check-circle-fill"></i></td>
+                    <td class="text-center text-success"><i class="bi bi-check-circle-fill"></i></td>
+                    <td class="text-center"></td>
+                    <td class="text-center"></td>
+                </tr>
+                <tr class="highlight">
+                    <td>Early-Warning Gap Detection</td>
+                    <td class="text-center text-success"><i class="bi bi-check-circle-fill"></i></td>
+                    <td class="text-center"></td>
+                    <td class="text-center"></td>
+                    <td class="text-center text-success"><i class="bi bi-check-circle-fill"></i></td>
+                </tr>
+                <tr>
+                    <td>Industry Readiness Dashboard</td>
+                    <td class="text-center text-success"><i class="bi bi-check-circle-fill"></i></td>
+                    <td class="text-center"></td>
+                    <td class="text-center text-success"><i class="bi bi-check-circle-fill"></i></td>
+                    <td class="text-center text-success"><i class="bi bi-check-circle-fill"></i></td>
+                </tr>
+                <tr class="highlight">
+                    <td>Recommendations/Guided Next Steps</td>
+                    <td class="text-center text-success"><i class="bi bi-check-circle-fill"></i></td>
+                    <td class="text-center"></td>
+                    <td class="text-center"></td>
+                    <td class="text-center text-success"><i class="bi bi-check-circle-fill"></i></td>
+                </tr>
+                <tr>
+                    <td>Notifications/Alerts</td>
+                    <td class="text-center text-success"><i class="bi bi-check-circle-fill"></i></td>
+                    <td class="text-center text-success"><i class="bi bi-check-circle-fill"></i></td>
+                    <td class="text-center"></td>
+                    <td class="text-center text-success"><i class="bi bi-check-circle-fill"></i></td>
+                </tr>
+                <tr>
+                    <td>Location-Based Event Recommendations</td>
+                    <td class="text-center text-success"><i class="bi bi-check-circle-fill"></i></td>
+                    <td class="text-center"></td>
+                    <td class="text-center"></td>
+                    <td class="text-center text-success"><i class="bi bi-check-circle-fill"></i></td>
+                </tr>
+                <!-- Data Collection & Feedback -->
+                <tr>
+                    <td rowspan="3" class="category-cell"><strong>Data Collection &amp; Feedback</strong></td>
+                    <td>Input Up-To-Date Industry Data</td>
+                    <td class="text-center"></td>
+                    <td class="text-center"></td>
+                    <td class="text-center text-success"><i class="bi bi-check-circle-fill"></i></td>
+                    <td class="text-center text-success"><i class="bi bi-check-circle-fill"></i></td>
+                </tr>
+                <tr>
+                    <td>Alumni Survey</td>
+                    <td class="text-center"></td>
+                    <td class="text-center text-success"><i class="bi bi-check-circle-fill"></i></td>
+                    <td class="text-center"></td>
+                    <td class="text-center text-success"><i class="bi bi-check-circle-fill"></i></td>
+                </tr>
+                <tr>
+                    <td>Survey Results Dashboard</td>
+                    <td class="text-center"></td>
+                    <td class="text-center"></td>
+                    <td class="text-center"></td>
+                    <td class="text-center text-success"><i class="bi bi-check-circle-fill"></i></td>
+                </tr>
+                <!-- System Administration -->
+                <tr>
+                    <td rowspan="3" class="category-cell"><strong>System Administration</strong></td>
+                    <td>User Management</td>
+                    <td class="text-center"></td>
+                    <td class="text-center"></td>
+                    <td class="text-center"></td>
+                    <td class="text-center text-success"><i class="bi bi-check-circle-fill"></i></td>
+                </tr>
+                <tr>
+                    <td>AI Configuration/Rule Updates</td>
+                    <td class="text-center"></td>
+                    <td class="text-center"></td>
+                    <td class="text-center"></td>
+                    <td class="text-center text-success"><i class="bi bi-check-circle-fill"></i></td>
+                </tr>
+                <tr>
+                    <td>Data Quality Monitoring</td>
+                    <td class="text-center"></td>
+                    <td class="text-center"></td>
+                    <td class="text-center"></td>
                     <td class="text-center text-success"><i class="bi bi-check-circle-fill"></i></td>
                 </tr>
             </tbody>
