@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% from 'components/deliverable.html' import deliverable %}
+{% from 'components/presentation-iframe.html' import presentation_iframe %}
 
 {% set active_page = 'problem' %}
 
@@ -60,10 +60,7 @@
     <p>
         This diagram shows the current process flow and highlights where the process breaks.
     </p>
-    {{ deliverable(
-        "Current Process Flow",
-        "images/flows/current-process-flow.png"
-    )}}
+    {{ presentation_iframe(slides_url, slide_id="g3c9b1d106aa_0_6", controls=False) }}
 </section>
 
 {% endblock %}

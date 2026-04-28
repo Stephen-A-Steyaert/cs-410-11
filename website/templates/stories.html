@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% from 'components/presentation-iframe.html' import presentation_iframe %}
+
+{% block title %}User Stories{% endblock %}
+{% block description %}User Stories - GradPace by Team Copper.{% endblock %}
+{% block keywords %}{% endblock %}
+
+{% block css %}
+<!-- Preconnect to Google Docs for embedded presentation -->
+<link rel="preconnect" href="https://docs.google.com" crossorigin>
+<!-- Preload Bootstrap Icons -->
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css" as="style">
+<link rel="preload" href="{{ url_for('static', filename='css/feasibility.min.css') }}" as="style">
+<!-- Load CSS -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/feasibility.min.css') }}">
+
+{% block content %}
+<!-- Page Header -->
+<div class="hero-section">
+    <h1 class="display-6">User Stories</h1>
+</div>
+
+{% set slides_url = "https://docs.google.com/presentation/d/e/2PACX-1vRmxiUiun-glCD5RChizDFVtDVlp-m9z0EXXgHHBEHZSY9rnuNfJbryGFvNpg4EzZxYOchQ1--1c5bq/pubembed" %}
+
+
+<section id="user-stories" class="section-card">
+    <h2 class="section-title">User Stories</h2>
+    {{ presentation_iframe(slides_url, slide_ids=["g3d4904ebada_0_76", "g3d57eb24bf2_0_12"], controls=False) }}
+</section>
+
+{% endblock %}

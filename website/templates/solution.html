@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% from 'components/deliverable.html' import deliverable %}
+{% from 'components/presentation-iframe.html' import presentation_iframe %}
 
 {% set active_page = 'solution' %}
 
@@ -60,10 +60,7 @@
     <p>
         This diagram shows the proposed solution process flow and highlights where the system resolves existing process breakdowns.
     </p>
-    {{ deliverable(
-        "Solution Process Flow",
-        "images/flows/solution-process-flow.png"
-    )}}
+    {{ presentation_iframe(slides_url, slide_id="g3c9996ad0eb_0_470", controls=False) }}
 </section>
 
 {% endblock %}
