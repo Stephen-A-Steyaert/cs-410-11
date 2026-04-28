@@ -66,6 +66,9 @@
           </div>
         </li>
         <li class="nav-item">
+          <a class="nav-link {{ 'active' if active_page == 'stories' }}" aria-current="page" href="{{url_for('blueprint.stories')}}">User Stories</a>
+        </li>
+        <li class="nav-item">
           <a class="nav-link {{ 'active' if active_page == 'references' }}" aria-current="page" href="{{url_for('blueprint.references')}}">References</a>
         </li>
         <li class="nav-item">

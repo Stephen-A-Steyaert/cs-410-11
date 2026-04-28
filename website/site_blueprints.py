@@ -163,6 +163,15 @@ def deliverables():
         return _cached()
     return render_template('deliverables.html')
 
+@blueprint.route('/stories')
+def stories():
+    if cache:
+        @cache.cached(timeout=86_400, key_prefix='stories')
+        def _cached():
+            return render_template('stories.html')
+        return _cached()
+    return render_template('stories.html')
+
 @blueprint.route('/references')
 def references():
     if cache:
