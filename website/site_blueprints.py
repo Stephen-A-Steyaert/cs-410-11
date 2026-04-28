@@ -96,9 +96,9 @@ def design_utd():
     if cache:
         @cache.cached(timeout=3600, key_prefix='design_utd')  # Shorter for WIP
         def _cached():
-            return render_template('design-slides-utd.html')
+            return render_template('design-slides-up-to-date.html')
         return _cached()
-    return render_template('design-slides-utd.html')
+    return render_template('design-slides-up-to-date.html')
 
 @blueprint.route('/design-v1')
 def design_version_one():
