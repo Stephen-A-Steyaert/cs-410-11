@@ -1,11 +1,11 @@
 {% extends 'base.html' %}
 {% from 'components/presentation-iframe.html' import presentation_iframe %}
 
-{% set active_page = 'designV1' %}
+{% set active_page = 'designUTD' %}
 
-{% block title %}Design Presentation Work-in-Progress{% endblock %}
-{% block description %}GradPace Design Presentation Work-in-Progress - Team Copper's design presentation for Old Dominion University Computer Science.{% endblock %}
-{% block keywords %}GradPace design, design presentation WIP, ODU CS project, Team Copper design slides{% endblock %}
+{% block title %}Design Presentation - Up-to-Date{% endblock %}
+{% block description %}GradPace Design Presentation Up-To-Date - Team Copper's design presentation for Old Dominion University Computer Science.{% endblock %}
+{% block keywords %}GradPace design, design presentation UTD, ODU CS project, Team Copper design slides{% endblock %}
 
 {% block css %}
 <!-- Preconnect to Google Docs for embedded presentation -->
@@ -27,7 +27,7 @@
         Presentation
         <i class="bi bi-file-earmark-pdf-fill" style="font-size: .95rem;"></i>
     </a>
-    Work-in-Progress
+    Up-to-Date
 </p>
 {{ presentation_iframe("https://docs.google.com/presentation/d/e/2PACX-1vRmxiUiun-glCD5RChizDFVtDVlp-m9z0EXXgHHBEHZSY9rnuNfJbryGFvNpg4EzZxYOchQ1--1c5bq/pubembed") }}
 {% endblock %}

@@ -91,14 +91,14 @@ def final_feasibility():
         return _cached()
     return render_template('final-feasibility-slides.html')
 
-@blueprint.route('/design-wip')
-def design_wip():
+@blueprint.route('/design-utd')
+def design_utd():
     if cache:
-        @cache.cached(timeout=3600, key_prefix='design_wip')  # Shorter for WIP
+        @cache.cached(timeout=3600, key_prefix='design_utd')  # Shorter for WIP
         def _cached():
-            return render_template('design-slides-wip.html')
+            return render_template('design-slides-utd.html')
         return _cached()
-    return render_template('design-slides-wip.html')
+    return render_template('design-slides-utd.html')
 
 @blueprint.route('/design-v1')
 def design_version_one():
