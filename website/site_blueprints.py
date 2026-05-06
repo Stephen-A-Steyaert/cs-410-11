@@ -136,7 +136,7 @@ def design_version_four():
         return _cached()
     return render_template('design-slides-version-4.html')
 
-@blueprint.route('/design-v4')
+@blueprint.route('/prototype-wip')
 def prototype_presentation_wip():
     if cache:
         @cache.cached(timeout=3_600, key_prefix='prototype_presentation_wip')
