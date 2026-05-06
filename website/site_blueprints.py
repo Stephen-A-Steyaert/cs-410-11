@@ -136,6 +136,15 @@ def design_version_four():
         return _cached()
     return render_template('design-slides-version-4.html')
 
+@blueprint.route('/design-v4')
+def prototype_presentation_wip():
+    if cache:
+        @cache.cached(timeout=3_600, key_prefix='prototype_presentation_wip')
+        def _cached():
+            return render_template('prototype-wip.html')
+        return _cached()
+    return render_template('prototype-wip.html')
+
 @blueprint.route('/labs')
 def labs():
     if cache:
